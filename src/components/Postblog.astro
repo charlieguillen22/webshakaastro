@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+import Button from '../components/Button.astro';
+
+const { title, description, url, heroImage, heroImageAlt = "" } = Astro.props;
+---
+
+<div class="wrapper-blog">
+    {heroImage && (
+        <a href={url}><Image src={heroImage} alt={heroImageAlt} class="img-featured-blog" /></a>
+    )}
+    <div class="text-wrapper-blog">
+        <h3><a href={url}>{title}</a></h3>
+        <p>{description}</p>
+        <Button href={url} texto="Leer más" icono="andrsrxn:arrow-corner-down-right" />
+    </div>
+</div>

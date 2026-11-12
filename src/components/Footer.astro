@@ -1,0 +1,33 @@
+---
+import Navigation from "../components/Navigation.astro";
+import MenuLegal from "../components/MenuLegal.astro";
+import Button from "../components/Button.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import Spacer from '../components/Spacer.astro';
+---
+<footer>
+    <section>
+        <div class="container">
+            <div class="col-6">
+                <h3 class="bigtitle">¿Hablamos?</h3>
+                <Button href="mailto:info@shakagency.es" texto="info@shakagency.es" icono="andrsrxn:arrow-corner-down-right" size="large" />
+                <Spacer size="2rem" />
+                <SocialLinks />
+            </div>
+            <div class="col-3">
+                <Navigation />
+            </div>
+            <div class="col-3">
+                <MenuLegal />
+            </div>
+        </div>
+    </section>
+    <section class="copyright-section">
+        <p class="logohome">Shaka Agency</p>
+        <div class="container ">
+            <div class="col-12 copyright">
+                <p>© 2026 Shaka Agency – Todos los derechos reservados</p>
+            </div>
+        </div>
+    </section>
+</footer>

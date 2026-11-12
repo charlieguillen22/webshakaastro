@@ -1,0 +1,25 @@
+---
+import { Icon } from "astro-icon/components";
+
+const {
+  instagram = "https://www.instagram.com/shakagency",
+  linkedin = "https://www.linkedin.com/company/shaka-agency-malaga",
+} = Astro.props;
+---
+
+<ul class="social-links">
+  {instagram && (
+    <li>
+      <a href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Síguenos en Instagram">
+        <Icon name="fa6-brands:instagram" />
+      </a>
+    </li>
+  )}
+  {linkedin && (
+    <li>
+      <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="Síguenos en LinkedIn">
+        <Icon name="fa6-brands:linkedin-in" />
+      </a>
+    </li>
+  )}
+</ul>

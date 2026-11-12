@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import gifAbout from '../assets/11-2026/gif-quienes-somos.gif';
+import logoShaka from '../assets/11-2026/logo-shaka-new.png';
+import bgAbout from '../assets/11-2026/img-bg-quienes-somos.jpg';
+import Button from '../components/Button.astro';
+import Faqs from '../components/Faqs.astro';
+
+
+const pageTitle = "Agencia Creativa Shaka Agency";
+const pageDescription = "Shaka Agency es una agencia de marketing digital en Málaga joven, especializados en diseño y desarrollo web, redes sociales y branding."
+
+---
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+    <section>
+        <div class="container">
+            <div class="col-5">
+                <h1 class="title-about">Somos una agencia creativa en Málaga</h1>
+            </div>
+            <div class="col-4">
+                <Image src={gifAbout} alt="Gif niño surfeando en el salon" class="img-hero-about" />
+            </div>
+            <div class="col-3 titleheroabout">
+                <p>Desarrollamos tu estrategia digital</p>
+                 <Button href="/contacto/" texto="Hablemos" icono="andrsrxn:arrow-corner-down-right" />
+            </div>
+        </div>
+    </section>
+    <section class="nopadding-top">
+        <p class="logohome">Shaka Agency</p>
+    </section>
+    <section class="nopadding-top">
+        <div class="container">
+            <div class="col-2">
+                <p class="subtitle">Shaka Angecy</p>
+            </div>
+            <div class="col-6">
+                <p class="text-big">Shaka Agency es una agencia de marketing digital en Málaga joven, con ganas de nuevos retos y oportunidades.</p>
+            </div>
+        </div>
+    </section>
+    <section class="nopadding-top">
+        <div class="container right">
+            <div class="col-2">
+                <h2 class="subtitle">Quiénes somos</h2>
+            </div>
+            <div class="col-5">
+                <p>En Shaka Agency estamos especializados en diferentes ramas de marketing digital y marketing a secas, por ejemplo diseño web, 
+                    diseño gráfico, cartelería, merchandising, gestión de redes sociales, y otros… </p>
+                <p>Además nos encanta hacer que lo difícil parezca fácil. Shaka Agency nace con la intención de poder facilitarte las tareas 
+                    relacionadas con la visibilidad de tu negocio, pudiendo liberar al pequeño y mediano empresario de tareas que le quitan tiempo 
+                    para realizar su actividad diaria como por ejemplo gestionar las redes sociales o la misma página web.</p>
+            </div>
+        </div>
+    </section>
+    <section class="nopadding-top">
+        <div class="container">
+            <div class="col-12">
+                <Image src={bgAbout} alt="persona surfeando con longboard" class="img-about-bg" />
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="col-2">
+                <h2 class="subtitle">¿Por qué Shaka Agency?</h2>
+            </div>
+            <div class="col-8">
+                <Faqs />
+            </div>
+            <div class="col-2 logo">
+                <Image src={logoShaka} alt="logo shaka mano saludo shaka" />
+            </div>
+        </div>
+    </section>
+    
+
+</BaseLayout>

@@ -1,0 +1,16 @@
+
+RewriteEngine On
+
+# Redirecciones 301 de URLs antiguas
+
+RewriteRule ^portfolio-shaka-agency/?$ https://shakagency.es/portfolio/ [R=301,L]
+
+RewriteRule ^nuestros-servicios/diseno-web/?$ https://shakagency.es/nuestros-servicios/#diseno-web [R=301,L]
+
+RewriteRule ^nuestros-servicios/diseno-grafico/?$ https://shakagency.es/nuestros-servicios/#branding [R=301,L]
+
+RewriteRule ^nuestros-servicios/merchandising/?$ https://shakagency.es/nuestros-servicios/#branding [R=301,L]
+
+RewriteRule ^nuestros-servicios/diseno-carteleria/?$ https://shakagency.es/nuestros-servicios/#branding [R=301,L]
+
+RewriteRule ^nuestros-servicios/redes-sociales/?$ https://shakagency.es/nuestros-servicios/#redes [R=301,L]

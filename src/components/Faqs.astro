@@ -1,0 +1,85 @@
+---
+// Edita este array con tus preguntas y respuestas
+const faqs = [
+  {
+    pregunta: "¿Qué nos diferencia de los demás?",
+    respuesta: "Combinamos creatividad y estrategia. No hacemos campañas bonitas por hacerlas: cada idea nace de entender a tu marca, a tu público y a tus objetivos de negocio, y se mide por los resultados que genera.",
+  },
+  {
+    pregunta: "¿Qué servicios ofrecéis?",
+    respuesta: "Cubrimos todo el recorrido digital: diseño y desarrollo web, branding y estrategia de marca, gestión de redes sociales, creación de contenido, SEO, diseño web y email marketing.",
+  },
+  {
+    pregunta: "¿Cómo es el proceso de trabajo?",
+    respuesta: "Empezamos con una reunión para conocer tu negocio. Después hacemos un diagnóstico, proponemos una estrategia con objetivos claros, la ejecutamos y te compartimos informes periódicos para ajustar sobre la marcha.",
+  },
+  {
+    pregunta: "¿A quién nos dirigimos?",
+    respuesta: "A todos. Pequeñas empresas, comercios locales, autónomos, cualquier negocio que necesite poner en valor su trabajo, mostrarse en internet y generar más ventas."
+  },
+  {
+    pregunta: "¿Cómo empiezo?",
+    respuesta: "Es muy sencillo: escríbenos o reserva una llamada inicial gratuita. Nos cuentas tus retos y te explicamos cómo podemos ayudarte.",
+  },
+];
+---
+
+<div class="faqs">
+  {
+    faqs.map((faq) => (
+      <details class="faq">
+        <summary class="faq__titulo">
+          <span>{faq.pregunta}</span>
+          <span class="faq__icono" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__contenido">
+          <p class="faq__texto">{faq.respuesta}</p>
+        </div>
+      </details>
+    ))
+  }
+</div>
+
+<script>
+  const DURACION = 300; // ms
+  const reducirMovimiento = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  document.querySelectorAll<HTMLDetailsElement>(".faq").forEach((details) => {
+    const summary = details.querySelector("summary") as HTMLElement;
+    const contenido = details.querySelector(".faq__contenido") as HTMLElement;
+    let animacion: Animation | null = null;
+
+    details.dataset.abierto = String(details.open);
+
+    summary.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Altura actual (por si el usuario hace clic a mitad de animación)
+      // Si está cerrado, partimos de 0: el navegador puede devolver la altura
+      // "antigua" del contenido oculto y la animación de apertura no se vería.
+      const alturaActual = details.open
+        ? contenido.getBoundingClientRect().height
+        : 0;
+      animacion?.cancel();
+
+      const abrir = details.dataset.abierto !== "true";
+      details.dataset.abierto = String(abrir);
+
+      if (abrir) details.open = true;
+
+      const alturaFinal = abrir ? contenido.scrollHeight : 0;
+
+      animacion = contenido.animate(
+        { height: [`${alturaActual}px`, `${alturaFinal}px`] },
+        { duration: reducirMovimiento ? 0 : DURACION, easing: "ease" }
+      );
+
+      animacion.onfinish = () => {
+        if (!abrir) details.open = false;
+        animacion = null;
+      };
+    });
+  });
+</script>

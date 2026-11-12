@@ -1,0 +1,57 @@
+---
+import Button from "./Button.astro";
+---
+
+<form class="contact-form" method="POST" action="/enviar.php">
+  <div class="form-field">
+  <label for="nombre" class="sr-only">Nombre</label>
+  <input type="text" id="nombre" name="nombre" placeholder="Nombre" autocomplete="name" required />
+</div>
+
+<div class="form-field">
+  <label for="email" class="sr-only">Email</label>
+  <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required />
+</div>
+
+<div class="form-field">
+  <label for="telefono" class="sr-only">Teléfono</label>
+  <input type="tel" id="telefono" name="telefono" placeholder="Teléfono (opcional)" autocomplete="tel" />
+</div>
+
+<div class="form-field form-field--full">
+  <label for="mensaje" class="sr-only">Mensaje</label>
+  <textarea id="mensaje" name="mensaje" rows="6" placeholder="Mensaje" required></textarea>
+</div>
+
+  <!-- Trampa anti-spam: los bots la rellenan, las personas no la ven -->
+  <div class="form-hp" aria-hidden="true">
+    <label for="website">No rellenes este campo</label>
+    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div class="form-field form-field--full form-consent">
+    <input type="checkbox" id="privacidad" name="privacidad" required />
+    <label for="privacidad">
+      He leído y acepto la <a href="/politica-de-privacidad/">política de privacidad</a>
+    </label>
+  </div>
+
+  <div class="form-field form-field--full">
+    <Button type="submit" texto="Enviar" icono="andrsrxn:arrow-corner-down-right" />
+  </div>
+
+  <p class="form-status" role="status" hidden></p>
+</form>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const status = document.querySelector(".form-status");
+
+  if (status && params.has("enviado")) {
+    status.textContent = "¡Gracias! Hemos recibido tu mensaje y te responderemos lo antes posible.";
+    status.hidden = false;
+  } else if (status && params.has("error")) {
+    status.textContent = "No hemos podido enviar el mensaje. Revisa los campos e inténtalo de nuevo.";
+    status.hidden = false;
+  }
+</script>

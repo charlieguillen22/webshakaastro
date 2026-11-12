@@ -1,0 +1,28 @@
+---
+interface Props {
+  size?: string;
+}
+
+const { size = "4rem" } = Astro.props;
+---
+
+<div class="spacer" style={`--spacer-size: ${size}`} aria-hidden="true"></div>
+
+<style>
+  .spacer {
+    height: var(--spacer-size);
+  }
+
+  /* Tablet: espacios un 20% más pequeños; móvil: un 40% */
+  @media (max-width: 992px) {
+    .spacer {
+      height: calc(var(--spacer-size) * 0.8);
+    }
+  }
+
+  @media (max-width: 650px) {
+    .spacer {
+      height: calc(var(--spacer-size) * 0.6);
+    }
+  }
+</style>

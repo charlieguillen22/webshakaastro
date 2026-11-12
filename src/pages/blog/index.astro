@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Postblog from "../../components/Postblog.astro";
+import Spacer from '../../components/Spacer.astro';
+
+
+const pageTitle = "Blog";
+const pageDescription = "Blog de marekting digital y más";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+  <section>
+    <div class="container">
+        <h1 class="title-normal">{pageTitle}</h1>
+    </div>
+    <Spacer size="2rem" />
+    <div class="container">
+        <div class="grid-post">
+            {posts.map((post) => (
+                <Postblog
+                title={post.data.title}
+                description={post.data.description}
+                url={`/blog/${post.id}/`}
+                heroImage={post.data.heroImage}
+                heroImageAlt={post.data.heroImageAlt}
+                />
+            ))}
+        </div>
+    </div>
+  </section>
+</BaseLayout>

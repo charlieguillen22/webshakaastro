@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Postblog from "../../../components/Postblog.astro";
+
+export async function getStaticPaths() {
+  const proyectos = (await getCollection("portfolio", ({ data }) => !data.draft))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  const tags = [...new Set(proyectos.flatMap((proyecto) => proyecto.data.tags ?? []))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      proyectos: proyectos.filter((proyecto) => proyecto.data.tags?.includes(tag)),
+    },
+  }));
+}
+
+const { tag, proyectos } = Astro.props;
+---
+
+<BaseLayout pageTitle={`Portfolio: ${tag}`} pageDescription={`Proyectos de ${tag}`}>
+  <section>
+    <div class="container">
+      <h1 class="title-normal">{tag}</h1>
+    </div>
+  </section>
+
+  <section class="nopadding-top">
+    <div class="container">
+      {proyectos.map((proyecto) => (
+        <div class="col-4">
+          <Postblog
+            title={proyecto.data.title}
+            description={proyecto.data.description}
+            url={`/portfolio/${proyecto.id}/`}
+            heroImage={proyecto.data.heroImage}
+            heroImageAlt={proyecto.data.heroImageAlt}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

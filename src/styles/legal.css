@@ -1,0 +1,56 @@
+.post-content {
+  line-height: 1.7;
+}
+
+.post-content h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.post-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.post-content p,
+.post-content ul {
+  margin-bottom: 1.25rem;
+}
+
+.post-content ul {
+  padding-left: 1.5rem;
+}
+
+.post-content a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.5rem 0 2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-wrapper th {
+  font-weight: 600;
+}
+
+.post-content address {
+  font-style: normal;
+}

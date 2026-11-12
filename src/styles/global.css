@@ -1,0 +1,2338 @@
+/******** Reset ********/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/***********************************************
+Estilos globales
+************************************************/
+
+/******** Aparecer al hacer scroll ********/
+.js .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0s);
+}
+
+.js .reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/******** Fuentes ********/
+@font-face {
+    font-family: "BlauerNue";
+    src: url("/fonts/BlauerNue-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Aeonik Pro Light";
+    src: url("/fonts/Aeonik\ Pro\ Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Aeonik Pro Bold";
+    src: url("/fonts/Aeonik\ Pro\ Bold.woff") format("woff");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/******** Colores (variables) ********/
+:root {
+    --color-bg: #E5E3DB;
+    --color-title: #212125;
+    --color-text: #212125; 
+    --color-button: #212125;
+    --color-categories: #c25800;
+    --color-bg-alt: #DBD8CD;
+    --color-bg-footer: #212125;
+    --color-title-footer: #E5E3DB;
+    --color-text-footer: #E5E3DB; 
+}
+
+/******** Tipografías y colores ********/
+body {
+    font-family: "Aeonik Pro Light", Georgia, serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Aeonik Pro Bold", Arial, sans-serif;
+    font-weight: 800;
+    color: var(--color-title);
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+h1.title-normal {
+    text-transform: none !important;
+}
+
+h1 {
+    font-size: 8rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+h2.subtitle {
+    font-size: 1rem;
+}
+
+h3 {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+h3.subtitle {
+    font-size: 1rem;
+}
+
+h3.bigtitle {
+    font-size: 4rem;
+    text-transform:none;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+p, a {
+    font-size: 16px;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+p.text-big {
+    font-family: 'Aeonik Pro Bold';
+    font-size: 2rem;;
+    font-weight: 800;
+}
+
+p.subtitle {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: 'Aeonik Pro Bold';
+}
+
+a {
+    color: var(--color-button);
+    transition: all .3s ease-in-out;
+}
+
+
+/******** Espacio entre secciones ********/
+section {
+    padding-block: 3.5em;
+}
+
+section.alternative {
+    padding-block: 1.5em;
+    background-color: var(--color-bg-alt);
+}
+
+section.section-hero {
+    min-height: 65vh;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+section.nopadding-top{
+    padding-top: 0;
+}
+
+section.section-portfolio {
+    min-height: 100vh;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+}
+
+/******** Ancho del contenido ********/
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1470px;
+    margin-inline: auto;   /* centra el contenido */
+    padding-inline: 1.5rem; /* margen lateral en pantallas pequeñas */
+    flex-wrap: wrap;
+    row-gap: 1.5rem; 
+}
+
+/******** Columnas de un cointainer flex ********/
+[class^="col-"] {
+    box-sizing: border-box;
+    padding-inline: 1.5rem;
+}
+.col-1  { width: 8.3333%; }
+.col-2  { width: 16.6667%; }
+.col-3  { width: 25%; }
+.col-4  { width: 33.3333%; }
+.col-5  { width: 41.6667%; }
+.col-6  { width: 50%; }
+.col-7  { width: 58.3333%; }
+.col-8  { width: 66.6667%; }
+.col-9  { width: 75%; }
+.col-10 { width: 83.3333%; }
+.col-11 { width: 91.6667%; }
+.col-12 { width: 100%; }
+
+.col-portfolio {width: 20%}
+
+
+/******** Botones ********/
+.btn {
+    display: inline-flex;
+    width: fit-content;
+    color: var(--color-button);
+    font-size: 1.1rem;
+}
+
+.btn :global(svg) {
+    width: 1.1em;
+    height: 1.1em;
+    flex: none;
+    fill: currentColor;
+}
+
+.btn .btn-icono {
+    margin-top: -0.25rem;
+}
+
+.btn-texto {
+    position: relative;
+}
+.btn-texto::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--color-text) !important;
+    height: 1px;
+    width: 100%;
+    transition: transform .25s ease-out;
+    transform-origin: bottom left !important;
+    transform: scaleX(1);
+}
+.btn-texto:hover::after {
+    transform: scaleX(0);
+    transform-origin: bottom right !important;
+}
+
+.btn--large {
+    font-size: 1.25rem;
+}
+
+.btn--large .btn-icono {
+    font-size: 1.5rem;      /* el icono crece con el texto */
+}
+
+/******** Menús ********/
+.menu-links li {
+    position: relative;
+    width: fit-content;
+}
+.menu-links li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--color-text) !important;
+    height: 1px;
+    width: 100%;
+    transition: transform .25s ease-out;
+    transform-origin: bottom left !important;
+    transform: scaleX(1);
+
+}
+
+.menu-links li:hover::after {
+    transform: scaleX(0);
+    transform-origin: bottom right !important;
+}
+
+.header .main-menu .menu-links li::after{
+    display:none;
+}
+
+/******** Header ********/
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    max-width: 1470px;
+    margin-inline: auto; 
+    z-index: 999;
+}
+
+.header a.logo-header {
+    font-family: 'Aeonik Pro Bold' !important;
+    text-transform: lowercase;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.header .main-menu ul {
+    display:flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.header .contact a {
+    font-family: 'Aeonik Pro Bold';
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.header .contact {
+    position: relative;
+    line-height: 0;
+}
+
+.header .contact::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--color-text) !important;
+    height: 1px;
+    width: 100%;
+    transition: transform .25s ease-out;
+    transform-origin: bottom left !important;
+    transform: scaleX(1);
+}
+.header .contact:hover::after {
+    transform: scaleX(0);
+    transform-origin: bottom right !important;
+}
+
+/******** Footer ********/
+footer, footer a, footer p, footer h3, footer span {
+    background: var(--color-text);
+    color: var(--color-bg);
+    border-radius: 50px 50px 0px 0px;
+}
+
+section.copyright-section {
+    padding: 0;
+}
+
+.copyright p {
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+
+footer .menu-links li::after,
+footer .btn-texto::after {
+    background: var(--color-text-footer) !important;
+}
+
+
+/******** Home ********/
+p.textherohome {
+    font-family: 'Aeonik Pro Bold';
+    font-weight: 800;
+    font-size: 3rem;
+}
+
+.img-hero {
+    border-radius: 20px;
+    width: 60%;
+    margin-left: auto;
+    margin-top: 7rem;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+.titleherohome {
+    margin-top: 10rem;
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titleherohome h1,
+.titleherohome p {
+    font-family: 'Aeonik Pro Light';
+    font-weight: 300;
+    font-size: .8rem;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+section p.logohome {
+    font-family: 'Aeonik Pro Bold' !important;
+    text-transform: lowercase;
+    font-size: 14rem;
+    padding: 0;
+    text-align: center;
+}
+
+.gif-surfing {
+    border-radius: 20px;
+    width: 60%;
+    margin-inline: auto;
+    margin-top: 7rem;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    position: relative;
+    z-index: 3;
+}
+
+.img-home {
+    border-radius: 50px;
+    width: 100%;
+    margin-left: auto;
+    margin-top: -6rem;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+}
+
+.litle-text {
+    max-width: 500px;
+    margin-inline: auto;
+}
+
+.services-home {
+    width: 80%;
+    margin-left: auto;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    height: 15em;
+    border-bottom: 1px solid #212125;
+    
+}
+
+.service .wrapper-services {
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service .wrapper-services p {
+    margin-bottom: 0.2rem;
+}
+
+.service.web:hover .wrapper-services,
+.service.branding:hover .wrapper-services, 
+.service.seo:hover .wrapper-services,
+.service.rrss:hover .wrapper-services {
+    opacity: 1;
+    height: 6em;
+}
+
+
+.img-service {
+    max-width: 250px;
+    width: 100%;
+}
+
+.img-service img {
+    transition: all .3s ease-in-out;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 50%;
+    border-radius: 20px;
+}
+
+.text-service {
+    width: 100%;
+}
+
+.text-service h3 {
+    text-transform: none;
+    font-size: 7rem;
+    margin-bottom: 0;
+}
+
+.service.web:hover .img-service img,
+.service.branding:hover .img-service img,
+.service.seo:hover .img-service img,
+.service.rrss:hover .img-service img {
+    width: 80%;
+}
+
+.container.align-center {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper-img-blog {
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.img-featured-blog-home {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0rem;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.container.blogcenter {
+    align-items: center;
+}
+
+.title-blog-home a {
+    font-size: 1.5rem;
+    line-height: 1.1;
+
+}
+
+.col-10.center {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 4.5rem;
+    max-width: 75%;
+}
+
+.col-10.center .text-block {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+/*Portfolio*/
+.col-portfolio {
+    flex: none;
+    width: 15%;
+    transition: width .6s cubic-bezier(.65, 0, .35, 1);
+    padding-left: .8rem;
+    padding-right: .8rem;
+    overflow: hidden;
+}
+
+.col-portfolio.active {
+    width: 40%;
+}
+
+
+.portfolio-inner {
+    height: 40rem;
+    position: relative;
+}
+
+.portfolio-date {
+    font-family: 'Aeonik Pro Bold';
+    font-weight: 700;
+    line-height: 110%;
+    font-size: .9rem;
+    text-transform: uppercase;
+}
+
+.portfolio-info {
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(.65, 0, .35, 1);
+}
+
+.col-portfolio.active .portfolio-info {
+    opacity: 1;
+}
+
+
+h3.portfolio-title {
+    text-transform: none;
+}
+
+.portfolio-thumbnail {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-end;
+    height: 36rem;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: height .6s cubic-bezier(.65, 0, .35, 1);
+}
+
+.col-portfolio.active .portfolio-thumbnail {
+    height: 30rem;
+}
+
+.portfolio-thumbnail a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.portfolio-thumbnail .object__image--fit {
+    width: 100%;
+    height: 100%;
+    transition: height .6s cubic-bezier(.65, 0, .35, 1), border-radius .6s cubic-bezier(.65, 0, .35, 1);
+}
+
+.portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/*Slider blog*/
+.ultimos-posts .slider-nav {
+    position: absolute;
+    top: 50%;
+    left: 72.5%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.ultimos-posts .swiper-button-prev,
+.ultimos-posts .swiper-button-next {
+  position: static;
+  margin: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);       /* tu negro #0b0b0c, semitransparente */
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  color: var(--color-title);
+  transition: all .3s ease-in-out;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    ::slotted(svg), svg {
+        width: 50% !important;
+        height: 50% !important;
+    }
+}
+
+.ultimos-posts .swiper-button-prev:hover,
+.ultimos-posts .swiper-button-next:hover {
+    background: var(--color-button);
+    color: var(--color-bg);
+    width: 62px;
+    height: 62px;
+}
+
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+    display: none;
+}
+
+
+/******** Plantilla página blog y categorías ********/
+.grid-post {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.wrapper-blog {
+    background: var(--color-bg-alt);
+    border-radius: 15px;
+    overflow: hidden;;
+}
+.text-wrapper-blog {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.text-wrapper-blog h3 {
+    font-size: 2rem;
+    line-height: 0;
+}
+
+.img-featured-blog {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+
+
+/******** Plantilla post blog ********/
+.title-blog {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.img-hero-postblog {
+    border-radius: 20px;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+section.blog h2 {
+    font-size: 1.8rem;
+}
+
+.info-post {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+
+}
+
+.post-categories {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.post-categories li {
+    background: var(--color-categories);
+    padding: 0.23rem 0.5rem;
+    border-radius: 1.5rem;
+}
+
+.post-categories a {
+    color: var(--color-bg);
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.date-post{
+    position:relative;
+}
+
+.date-post::before {
+    content: "|";
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: -1rem;
+    transform: translateY(-50%);
+}
+
+.date-post p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.blog iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+    margin-block: 2rem;
+    border-radius: 20px;
+}
+
+.wrapper-lastposts {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;       /* el espacio entre posts, mejor aquí */
+}
+
+.wrapper-lastposts > a {
+    flex: 0 0 100px;             /* no crece, no se encoge, mide 100px */
+}
+
+.text-wrapper-lastposts {
+    flex: 1;                     /* ocupa el resto */
+    min-width: 0;                /* permite que el texto largo salte de línea */
+}
+
+.img-featured-lastposts {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 0;
+}
+
+.blog .col-4 {
+    position: sticky;
+    top: 3rem;
+    align-self: flex-start;
+}
+
+/******** Contacto ********/
+.img-contact {
+    border-radius: 40px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.col-7.doble-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.intern-cols {
+    display: flex;
+    flex: 1;
+
+}
+
+/******** Portfolio ********/
+.container.slider-portfolio {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+}
+
+
+/* ---------- portfolio slider ---------- */
+.pslider {
+  position: relative;
+  padding-bottom: 3.5rem;
+  overflow: hidden;
+}
+
+.pslider .pslider-stage {
+  position: relative;
+  padding-bottom: 3.5rem;
+}
+
+.pslider .swiper-slide {
+  width: 78vw;
+  aspect-ratio: 1.29 / 1;
+  border-radius: 2.5rem;
+  overflow: hidden;
+  cursor: grab;
+}
+.pslider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pslider .pslider-ui {
+  position: absolute;
+  inset: 0 0 3.5rem 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.pslider .pslider-ui > * {
+  position: absolute;
+  margin: 0;
+}
+
+.pslider .pslider-btn {
+    position: absolute;
+    top: 50%;
+    width: clamp(2.75rem, 3.1vw, 3.75rem);
+    aspect-ratio: 1;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    color: var(--color-title);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transform: translateY(-50%);
+    pointer-events: auto;
+    transition: all 0.3s;
+}
+
+.pslider .pslider-btn:hover {
+    background: var(--color-bg-footer);
+    color: var(--color-text-footer);
+}
+
+.pslider .pslider-btn.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.pslider .pslider-prev { left: 9.8%; }
+.pslider .pslider-next { left: 81.2%; }
+
+.pslider .pslider-title {
+  left: 9.8%;
+  top: 74%;
+  transform: translateY(-50%);
+  font-size: clamp(3rem, 7vw, 8rem);
+  line-height: 1;
+  text-transform: none;
+  mix-blend-mode: difference;
+}
+.pslider .pslider-year {
+  left: 81.2%;
+  top: 67%;
+  color: var(--color-text);
+  font-size: 1.2rem;
+  font-family: 'Aeonik Pro Bold';
+}
+.pslider .pslider-cta {
+  left: 79%;
+  bottom: -3.5rem;
+  pointer-events: auto;
+}
+
+.pslider .pslider-title,
+.pslider .pslider-year,
+.pslider .pslider-cta {
+  transition: opacity 0.2s;
+}
+.pslider .pslider-ui.is-out .pslider-title,
+.pslider .pslider-ui.is-out .pslider-year,
+.pslider .pslider-ui.is-out .pslider-cta {
+  opacity: 0;
+}
+
+ /* ---------- miniaturas ---------- */
+.pslider .pslider-thumbs {
+  display: flex;
+  justify-content: safe center;
+  gap: 0.75rem;
+  padding: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.pslider .pslider-thumbs::-webkit-scrollbar {
+  display: none;
+}
+.pslider .pslider-thumb {
+  flex: 0 0 auto;
+  padding: 3px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+.pslider .pslider-thumb img {
+  display: block;
+  width: 68px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.pslider .pslider-thumb.is-active {
+  border-color: var(--color-bg-footer); /* en fondo claro: #1e1e24 */
+}
+
+@media (min-width: 769px) {
+  .pslider .swiper-slide { width: 38.7vw; }
+}
+
+@media (max-width: 768px) {
+  .pslider .pslider-stage { padding-bottom: 0; }
+  .pslider .pslider-ui {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1rem 0;
+  }
+  .pslider .pslider-ui > * {
+    position: static;
+    transform: none;
+  }
+  .pslider .pslider-title { flex-basis: 100%; order: 1; font-size: 3rem; }
+  .pslider .pslider-year { order: 2; }
+  .pslider .pslider-cta { order: 3; margin-right: auto; }
+  .pslider .pslider-prev { order: 4; }
+  .pslider .pslider-next { order: 5; }
+}
+
+  /* ---------- escritorio ---------- */
+  @media (min-width: 769px) {
+    .swiper-slide { width: 38.7vw; }
+  }
+
+  /* ---------- móvil: la UI va debajo del slider ---------- */
+  @media (max-width: 768px) {
+    .pslider { padding-bottom: 0; }
+    .pslider-ui {
+      position: static;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem 1rem 0;
+    }
+    .pslider-ui > * {
+      position: static;
+      transform: none;
+    }
+    .pslider-title { flex-basis: 100%; order: 1; font-size: 3rem; }
+    .pslider-year { order: 2; }
+    .pslider-cta { order: 3; margin-right: auto; }
+    .pslider-prev { order: 4; }
+    .pslider-next { order: 5; }
+  }
+
+
+/******** Plantilla portfolios ********/
+/*Hero portfolios*/
+.section-portfolio {
+    position: relative;
+    height: 110vh;
+    color: var(--color-text-footer);
+}
+
+.section-portfolio-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* detrás del contenido */
+}
+
+/* Capa oscura opcional, para que el texto se lea */
+.section-portfolio::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 11, 12, 0.3);
+  z-index: 0;
+}
+
+.section-portfolio > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-portfolio .container {
+    flex-direction: column;
+    justify-content: center;
+    min-height: 110vh;
+}
+
+.info-portfoliolayout {
+    display:flex;
+}
+
+h1.title-portfoliolayout {
+    text-transform: none;
+    color: var(--color-title-footer);
+}
+
+.title-info {
+    font-family: 'Aeonik Pro Bold';
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.text-info {
+    font-size: 1.2rem;
+}
+
+.text-info a {
+    color: white;
+}
+
+/*Body portfolio*/
+section.section-info-portfolio {
+    border-radius: 80px 80px 0px 0px;
+    position: relative;
+    padding-inline: inherit;
+    margin-top: -5rem;
+    z-index: 2;
+    background: var(--color-bg);
+}
+
+.section-info-portfolio .container {
+    width: 60% ;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+.col-4.bg-portfolio {
+    background: var(--color-bg-alt);
+    border-radius: 30px;
+    padding: 2rem;
+}
+
+.col-4.bg-portfolio h2 {
+    text-transform: none;
+    
+}
+
+.col-4.bg-portfolio p {
+    font-size: 0.9rem;
+}
+
+.container.boxes-portfolio {
+    gap: 1rem;
+    /* column-gap: 1rem; */
+    flex-wrap: nowrap;
+    row-gap: 0;
+}
+
+
+.portfolio-categories {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.8rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.portfolio-categories li {
+    background: var(--color-categories);
+    color: var(--color-bg);
+    padding: 0.23rem 0.5rem;
+    border-radius: 1.5rem;
+    line-height: 1.2;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/******** Quienes somos ********/
+.title-about {
+    font-size: 4rem;
+    text-transform: none;
+}
+.img-hero-about {
+    border-radius: 40px;
+}
+
+.titleheroabout {
+    margin-top: 10rem;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titleheroabout p {
+    font-family: 'Aeonik Pro Light';
+    font-weight: 300;
+    font-size: .8rem;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.container.right {
+    justify-content: flex-end;
+}
+
+.img-about-bg {
+    border-radius: 60px;
+    aspect-ratio: 21/9;
+    object-fit: cover;
+}
+
+.col-2.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+/*Faqs*/
+.faqs {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+}
+
+.faq {
+    background: var(--color-bg-footer);
+    color: var(--color-text-footer);
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.faq__titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.8rem;
+    font-size: 1.5rem;
+    font-family: 'Aeonik Pro Bold';
+    color: var(--color-text-footer);
+    cursor: pointer;
+    list-style: none; /* quita el triángulo por defecto */
+}
+
+.faq__titulo::-webkit-details-marker {
+    display: none; /* Safari */
+}
+
+.faq__titulo:focus-visible {
+    outline: 2px solid var(--color-text-footer);
+    outline-offset: -4px;
+    border-radius: 20px;
+}
+
+/* Icono + / − hecho con CSS */
+.faq__icono {
+    position: relative;
+    flex-shrink: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.faq__icono::before,
+.faq__icono::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-text-footer);
+    transition: transform 0.3s ease;
+}
+
+.faq__icono::after {
+    transform: rotate(90deg);
+}
+
+/* data-abierto se cambia al instante, así el icono no espera a que termine la animación */
+.faq[data-abierto="true"] .faq__icono::after {
+    transform: rotate(0deg);
+}
+
+/* overflow hidden necesario para recortar el texto mientras cambia la altura */
+.faq__contenido {
+    overflow: hidden;
+}
+
+.faq__texto {
+    margin: 0;
+    padding: 0 1.8rem 1.5rem;
+    color: var(--color-text-footer);
+    background: var(--color-bg-footer);
+}
+
+/******** Redes sociales ********/
+.social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    color: var(--color-title);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .social-links svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .social-links a:hover {
+    background: var(--color-button);
+    color: var(--color-bg);
+    transform: scale(1.1);
+  }
+
+  footer .social-links a {
+    color: var(--color-text-footer);
+  }
+
+  /******** FORMS ********/
+  .contact-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /*width: calc(50% - 0.75rem);*/
+    width: 100%;
+  }
+
+  .form-field--full {
+    width: 100%;
+  }
+
+  label {
+    font-size: 0.9rem;
+    color: var(--color-title);
+  }
+
+  .sr-only {
+    display: none;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    color: var(--color-title);
+    font: inherit;
+    transition: all 0.3s ease-in-out;
+  }
+
+  textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-button);
+  }
+
+  .form-consent {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .form-consent input {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    accent-color: var(--color-button);
+  }
+
+  .form-consent a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .form-hp {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .form-status {
+    width: 100%;
+    color: var(--color-title);
+  }
+
+  @media (max-width: 768px) {
+    .form-field {
+      width: 100%;
+    }
+  }
+
+/***********************************************
+RESPONSIVE · base (escritorio)
+************************************************/
+@media (max-width: 1337px) {
+    .img-home {
+        margin-top: 0;
+    }
+}
+
+
+/* Base (escritorio): el botón hamburguesa no se ve y el panel
+   "desaparece" para que logo, menú y email se comporten como antes */
+.menu-toggle {
+    display: none;
+}
+
+.header-panel {
+    display: contents;
+}
+
+/* ---------- Tipografía fluida ----------
+   Los títulos grandes escalan poco a poco con el ancho de pantalla.
+   clamp(mínimo, valor fluido, máximo): el máximo es el tamaño original de escritorio. */
+h1 {
+    font-size: clamp(2.5rem, 1.2rem + 7vw, 8rem);
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+h2 { font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem); }
+h3 { font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem); }
+
+h3.bigtitle { font-size: clamp(2.75rem, 1.5rem + 4.2vw, 4rem); }
+
+p.text-big { font-size: clamp(1.5rem, 1rem + 1.4vw, 2rem); }
+p.textherohome { font-size: clamp(2rem, 1rem + 3vw, 3rem); }
+
+.title-about { font-size: clamp(2.5rem, 1rem + 4.4vw, 4rem); }
+.title-blog { font-size: clamp(2rem, 1.2rem + 2.2vw, 3rem); }
+
+/* Logo gigante "Shaka Agency" (home, quiénes somos y footer) */
+section p.logohome {
+    font-size: clamp(2.5rem, 15vw, 14rem);
+}
+
+/* Títulos de los servicios de la home */
+.text-service h3 {
+    font-size: clamp(3.5rem, 6vw, 7rem);
+}
+
+.faq__titulo {
+    font-size: clamp(1.15rem, 0.9rem + 0.7vw, 1.5rem);
+}
+
+/* ---------- Menú hamburguesa: tablet y móvil (hasta 992px) ---------- */
+@media (max-width: 992px) {
+
+    html.menu-open {
+        overflow: hidden; /* bloquea el scroll con el menú abierto */
+    }
+
+    /* ---------- Header + menú hamburguesa ---------- */
+    .header {
+        padding: 0.75rem 1.5rem;
+    }
+
+    .header-brand,
+    .menu-toggle {
+        position: relative;
+        z-index: 2; /* por encima del panel abierto */
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        width: 44px;
+        height: 44px;
+        margin-right: -9px;
+    }
+
+    .menu-toggle__bar {
+        display: block;
+        width: 26px;
+        height: 2px;
+        background: var(--color-title);
+        transition: transform 0.3s ease;
+    }
+
+    .header.is-open .menu-toggle__bar:nth-child(1) {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .header.is-open .menu-toggle__bar:nth-child(2) {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+
+    .header-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        padding: 5.5rem 1.5rem 2.5rem;
+        background: var(--color-bg);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    }
+
+    .header.is-open .header-panel {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity 0.3s ease;
+    }
+
+    .header .main-menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .header .main-menu .menu-links a {
+        display: inline-block;
+        font-family: 'Aeonik Pro Bold';
+        font-size: 2.75rem;
+        line-height: 1;
+        text-transform: uppercase;
+        padding-block: 0.35rem;
+        margin-bottom: 0;
+    }
+
+    .header .contact a {
+        font-size: 14px;
+    }
+}
+
+/***********************************************
+RESPONSIVE · tablet (de 651px a 992px)
+************************************************/
+@media (min-width: 651px) and (max-width: 992px) {
+
+    /* ---------- Base ---------- */
+    body {
+        overflow-x: clip;
+    }
+
+    /* ---------- Tipografía ----------
+       Los tamaños de los títulos son fluidos (ver "Tipografía fluida" más arriba) */
+    .title-blog { margin-bottom: 2rem; }
+
+    /* ---------- Espacios entre secciones ---------- */
+    section {
+        padding-block: 3rem;
+    }
+
+    section.section-hero {
+        min-height: auto;
+        padding-block: 1rem;
+    }
+
+    /* ---------- Contenedor y columnas ----------
+       Menos margen lateral para que quepan las columnas, y que
+       container (0.75rem) + columna (0.75rem) = 1.5rem, igual que el header */
+    .container {
+        padding-inline: 0.75rem;
+    }
+
+    [class^="col-"] {
+        padding-inline: 0.75rem;
+    }
+
+    [class^="col-"] .container {
+        padding-inline: 0;
+    }
+
+    /* Columnas de "subtítulo" (col-1 / col-2): más anchas para que el texto no se rompa */
+    .col-1,
+    .col-2 {
+        width: 25%;
+    }
+
+    .col-1 + .col-9,
+    .col-1 + .col-5,
+    .col-2 + .col-4,
+    .col-2 + .col-5,
+    .col-2 + .col-6,
+    .col-2 + .col-8,
+    .col-2 + .col-10 {
+        width: 75%;
+    }
+
+    /* ---------- Botones ---------- */
+    .btn {
+        padding-block: 0.35rem;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+        border-radius: 40px 40px 0 0;
+    }
+
+    footer .col-6 {
+        width: 100%;
+    }
+
+    footer .col-3 {
+        width: 50%;
+    }
+
+    /* ---------- Home ---------- */
+    /* Hero: texto e imagen en dos columnas, título debajo */
+    .section-hero .col-4 {
+        width: 50%;
+    }
+
+    .section-hero .col-4:last-child {
+        width: 100%;
+    }
+
+    .img-hero {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .titleherohome {
+        margin-top: 0;
+        margin-inline: 0;
+        max-width: none;
+    }
+
+    /* "Cómo lo hacemos": la imagen va debajo, alineada con el texto */
+    .col-4 + .col-6 {
+        width: 75%;
+        margin-left: 25%;
+    }
+
+    .gif-surfing {
+        width: 60%;
+        margin: 0;
+    }
+
+    /* "Shaka Agency": texto arriba, imagen debajo a todo el ancho */
+    .col-2:has(> p.text-big),
+    .col-10:has(> .img-home) {
+        width: 100%;
+    }
+
+    .col-2:has(> p.text-big) > p:not(.text-big) {
+        max-width: 34rem;
+    }
+
+    .img-home {
+        border-radius: 40px;
+        margin-top: 0;
+    }
+
+    .litle-text {
+        margin-inline: 0;
+        max-width: none;
+    }
+
+    /* Servicios: sin hover (en tablet táctil no existe), el detalle se ve siempre */
+    .services-home {
+        width: 75%;
+    }
+
+    .service {
+        height: auto;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding-block: 1.5rem;
+    }
+
+    .img-service {
+        flex: none;
+        width: 96px;
+        max-width: 96px;
+    }
+
+    .services-home .service:is(.web, .branding, .seo, .rrss) .img-service img {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .text-service {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+    }
+
+    .text-service h3 {
+        font-size: clamp(2rem, 5.5vw, 3.5rem);
+        overflow-wrap: break-word;
+    }
+
+    .services-home .service:is(.web, .branding, .seo, .rrss) .wrapper-services {
+        opacity: 1;
+        height: auto;
+        margin-top: 1rem;
+        gap: 1.5rem;
+    }
+
+    /* Casos de éxito */
+    .col-10.center {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        width: 75%;
+    }
+
+    .col-10.center .text-block {
+        max-width: none;
+    }
+
+    /* Portfolio de la home: carrusel con scroll lateral en vez de acordeón con hover */
+    .container.portfolio {
+        flex-wrap: nowrap;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 0.75rem;
+        scrollbar-width: none;
+    }
+
+    .container.portfolio::-webkit-scrollbar {
+        display: none;
+    }
+
+    .col-portfolio,
+    .col-portfolio.active {
+        flex: 0 0 42%;
+        width: 42%;
+        padding-inline: 0;
+        scroll-snap-align: start;
+    }
+
+    .portfolio-inner {
+        height: auto;
+    }
+
+    .portfolio-info {
+        opacity: 1;
+    }
+
+    .portfolio-thumbnail,
+    .col-portfolio.active .portfolio-thumbnail {
+        position: relative;
+        height: 28rem;
+        margin-top: 1rem;
+        border-radius: 40px;
+    }
+
+    /* Slider de blog de la home: imagen arriba, texto debajo, flechas en horizontal */
+    .blogcenter > [class^="col-"] {
+        width: 100%;
+        padding-inline: 0;
+    }
+
+    .wrapper-img-blog {
+        border-radius: 35px;
+    }
+
+    .ultimos-posts .slider-nav {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        gap: 1rem;
+        padding: 1.5rem 0 1rem;
+    }
+
+    .ultimos-posts .slider-nav .swiper-button-prev:hover,
+    .ultimos-posts .slider-nav .swiper-button-next:hover {
+        width: 52px;
+        height: 52px;
+    }
+
+    /* ---------- Blog: listado y categorías ---------- */
+    .grid-post {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .container > .col-4:has(> .wrapper-blog) {
+        width: 50%;
+    }
+
+    /* ---------- Blog: entrada ---------- */
+    .blog {
+        overflow-wrap: break-word;
+    }
+
+    .blog pre {
+        overflow-x: auto;
+    }
+
+    .blog table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .info-post {
+        flex-wrap: wrap;
+        gap: 0.75rem 2rem;
+    }
+
+    /* ---------- Portfolio: slider del listado (651–768px) ---------- */
+    .pslider .pslider-title {
+        mix-blend-mode: normal; /* con la UI debajo del slider, "difference" deja el texto casi invisible */
+    }
+
+    /* ---------- Portfolio: página de proyecto ---------- */
+    section.section-portfolio {
+        height: auto;
+        min-height: 85vh;
+        min-height: 85svh;
+    }
+
+    .section-portfolio .container {
+        min-height: 85vh;
+        min-height: 85svh;
+    }
+
+    .info-portfoliolayout {
+        flex-wrap: wrap;
+        gap: 1.5rem 3rem;
+    }
+
+    .info-portfoliolayout [class^="col-"] {
+        width: auto;
+    }
+
+    section.section-info-portfolio {
+        border-radius: 60px 60px 0 0;
+        margin-top: -4rem;
+    }
+
+    .section-info-portfolio .container {
+        width: 80%;
+    }
+
+    /* Las 4 cajas en 2 × 2 */
+    .container.boxes-portfolio {
+        flex-wrap: wrap;
+        gap: 1rem;
+        row-gap: 1rem;
+    }
+
+    .col-4.bg-portfolio {
+        width: calc(50% - 0.5rem);
+        padding: 1.5rem;
+    }
+
+    /* ---------- Quiénes somos ---------- */
+    .col-5:has(> .title-about) {
+        width: 100%;
+    }
+
+    .col-4:has(> .img-hero-about) {
+        width: 58%;
+    }
+
+    .col-3.titleheroabout {
+        width: 42%;
+        margin: 0;
+        max-width: none;
+        align-self: flex-end;
+    }
+
+    .img-hero-about {
+        border-radius: 40px;
+    }
+
+    .img-about-bg {
+        border-radius: 40px;
+    }
+
+    .col-2.logo {
+        width: 75%;
+        margin-left: 25%;
+    }
+
+    .col-2.logo img {
+        width: 120px;
+    }
+
+    /* ---------- Contacto ---------- */
+    /* Imagen arriba a todo el ancho; debajo, el título y después formulario + teléfono */
+    .col-5:has(> .img-contact) {
+        width: 100%;
+    }
+
+    .img-contact {
+        aspect-ratio: 16 / 9;
+        border-radius: 30px;
+    }
+
+    .col-7.doble-col {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 1.5rem;
+    }
+
+    .doble-col > .col-12 {
+        order: -1;
+    }
+}
+
+/* Blog (entrada): hasta 860px el contenido y la barra lateral se apilan */
+@media (min-width: 651px) and (max-width: 860px) {
+    .blog .col-7,
+    .blog .col-4 {
+        width: 100%;
+    }
+
+    .blog .col-4 {
+        position: static;
+    }
+}
+
+/***********************************************
+RESPONSIVE · móvil (hasta 650px)
+************************************************/
+@media (max-width: 650px) {
+
+    /* ---------- Base ---------- */
+    body {
+        overflow-x: clip; /* red de seguridad contra scroll horizontal (no rompe el sticky) */
+    }
+
+    /* ---------- Tipografía ----------
+       Los tamaños de los títulos son fluidos (ver "Tipografía fluida" más arriba) */
+    .title-blog { margin-bottom: 1.5rem; }
+
+    /* ---------- Espacios entre secciones ---------- */
+    section {
+        padding-block: 2.5rem;
+    }
+
+    section.section-hero {
+        min-height: auto;
+        padding-block: 1rem;
+    }
+
+    /* ---------- Contenedor y columnas ---------- */
+    /* En móvil todo se apila: las columnas ocupan el 100% y el margen
+       lateral lo pone solo el contenedor (así no se suma el de ambos) */
+    .container {
+        padding-inline: 1.25rem;
+        row-gap: 1.25rem;
+    }
+
+    [class^="col-"] {
+        width: 100%;
+        padding-inline: 0;
+    }
+
+    /* Contenedores anidados (p. ej. slider del blog): sin doble margen */
+    [class^="col-"] .container {
+        padding-inline: 0;
+    }
+
+    /* ---------- Botones y enlaces táctiles ---------- */
+    .btn {
+        padding-block: 0.35rem;
+    }
+
+    footer .menu-links a {
+        display: inline-block;
+        margin-bottom: 0;
+        padding-block: 0.3rem;
+    }
+
+    /* ---------- Header (el menú hamburguesa se define en el bloque de 992px) ---------- */
+    .header {
+        padding: 0.75rem 1.25rem;
+    }
+
+    .header-panel {
+        padding-inline: 1.25rem;
+    }
+
+    .header .main-menu .menu-links a {
+        font-size: 2.25rem;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+        border-radius: 30px 30px 0 0;
+    }
+
+    /* Menú y menú legal, uno junto al otro */
+    footer .col-3 {
+        width: 50%;
+        padding-right: 1rem;
+    }
+
+    /* ---------- Home ---------- */
+    .img-hero {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .titleherohome {
+        margin-top: 0;
+        margin-inline: 0;
+        max-width: none;
+    }
+
+    .gif-surfing {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .img-home {
+        border-radius: 30px;
+        margin-top: 0;
+        aspect-ratio: 4 / 3;
+    }
+
+    .litle-text {
+        margin-inline: 0;
+    }
+
+    .services-home {
+        width: 100%;
+    }
+
+    /* Servicios: en móvil no hay "hover", así que el detalle se ve siempre */
+    .service {
+        height: auto;
+        align-items: flex-start;
+        gap: 1rem;
+        padding-block: 1.25rem;
+    }
+
+    .img-service {
+        flex: none;
+        width: 56px;
+        max-width: 56px;
+    }
+
+    .services-home .service:is(.web, .branding, .seo, .rrss) .img-service img {
+        width: 100%;
+        border-radius: 14px;
+    }
+
+    .text-service {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+    }
+
+    .text-service h3 {
+        font-size: clamp(1.35rem, 6.4vw, 2.25rem);
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .services-home .service:is(.web, .branding, .seo, .rrss) .wrapper-services {
+        opacity: 1;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+    }
+
+    /* Casos de éxito */
+    .col-10.center {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        max-width: 100%;
+    }
+
+    .col-10.center .text-block {
+        max-width: none;
+    }
+
+    /* Portfolio de la home: de "acordeón con hover" a carrusel con scroll lateral */
+    .container.portfolio {
+        flex-wrap: nowrap;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 1.25rem;
+        scrollbar-width: none;
+    }
+
+    .container.portfolio::-webkit-scrollbar {
+        display: none;
+    }
+
+    .col-portfolio,
+    .col-portfolio.active {
+        flex: 0 0 78%;
+        width: 78%;
+        padding-inline: 0;
+        scroll-snap-align: start;
+    }
+
+    .portfolio-inner {
+        height: auto;
+    }
+
+    .portfolio-info {
+        opacity: 1;
+    }
+
+    .portfolio-thumbnail,
+    .col-portfolio.active .portfolio-thumbnail {
+        position: relative;
+        height: 24rem;
+        margin-top: 1rem;
+        border-radius: 30px;
+    }
+
+    /* Slider de blog de la home: flechas debajo, en horizontal */
+    .wrapper-img-blog {
+        border-radius: 25px;
+    }
+
+    .ultimos-posts .slider-nav {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        gap: 1rem;
+        padding: 1.5rem 0 1rem; /* abajo deja sitio a la sombra de los botones */
+    }
+
+    .ultimos-posts .slider-nav .swiper-button-prev:hover,
+    .ultimos-posts .slider-nav .swiper-button-next:hover {
+        width: 52px;
+        height: 52px;
+    }
+
+    /* ---------- Blog: listado y categorías ---------- */
+    .grid-post {
+        grid-template-columns: 1fr;
+    }
+
+    /* ---------- Blog: entrada ---------- */
+    .blog {
+        overflow-wrap: break-word;
+    }
+
+    .blog pre {
+        overflow-x: auto;
+    }
+
+    .blog table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .blog iframe {
+        margin-block: 1.25rem;
+        border-radius: 14px;
+    }
+
+    section.blog h2 {
+        font-size: 1.4rem;
+    }
+
+    .blog .col-4 {
+        position: static; /* el sticky no tiene sentido cuando se apila */
+    }
+
+    .img-hero-postblog {
+        border-radius: 14px;
+    }
+
+    .info-post {
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .date-post::before {
+        display: none;
+    }
+
+    /* ---------- Portfolio: slider del listado ---------- */
+    .pslider .swiper-slide {
+        border-radius: 1.5rem;
+    }
+
+    .pslider .pslider-ui {
+        padding: 1.5rem 1.25rem 0;
+    }
+
+    .pslider .pslider-title {
+        font-size: 2.25rem;
+        mix-blend-mode: normal; /* "difference" sobre fondo liso deja el texto casi invisible */
+    }
+
+    .pslider .pslider-thumb img {
+        width: 56px;
+        height: 40px;
+    }
+
+    /* ---------- Portfolio: página de proyecto ---------- */
+    section.section-portfolio {
+        height: auto;
+        min-height: 80vh;
+        min-height: 80svh;
+    }
+
+    .section-portfolio .container {
+        min-height: 80vh;
+        min-height: 80svh;
+    }
+
+    .info-portfoliolayout {
+        flex-wrap: wrap;
+        gap: 1.5rem 2.5rem;
+    }
+
+    .info-portfoliolayout [class^="col-"] {
+        width: auto;
+    }
+
+    .text-info {
+        font-size: 1.05rem;
+    }
+
+    section.section-info-portfolio {
+        border-radius: 40px 40px 0 0;
+        margin-top: -3rem;
+    }
+
+    .section-info-portfolio .container {
+        width: 100%;
+    }
+
+    .container.boxes-portfolio {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 1rem;
+    }
+
+    .col-4.bg-portfolio {
+        padding: 1.5rem;
+        border-radius: 24px;
+    }
+
+    /* ---------- Quiénes somos ---------- */
+    .img-hero-about {
+        border-radius: 30px;
+    }
+
+    .titleheroabout {
+        margin-top: 0;
+        margin-inline: 0;
+        max-width: none;
+    }
+
+    .img-about-bg {
+        border-radius: 30px;
+        aspect-ratio: 4 / 3;
+    }
+
+    .col-2.logo img {
+        width: 40%;
+        max-width: 160px;
+    }
+
+    .faq {
+        border-radius: 16px;
+    }
+
+    .faq__titulo {
+        padding: 1rem 1.25rem;
+    }
+
+    .faq__texto {
+        padding: 0 1.25rem 1.25rem;
+    }
+
+    /* ---------- Contacto ---------- */
+    .img-contact {
+        border-radius: 30px;
+        aspect-ratio: 4 / 3;
+    }
+
+    .col-7.doble-col {
+        justify-content: flex-start;
+        gap: 1.25rem;
+    }
+
+    .doble-col > .col-12 {
+        order: -1; /* el título "Contacto" justo debajo de la imagen */
+    }
+
+    .intern-cols {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        font-size: 1rem; /* evita el zoom automático de iOS al enfocar */
+    }
+}

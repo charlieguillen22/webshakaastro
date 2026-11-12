@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Spacer from '../components/Spacer.astro';
+
+const {
+  pageTitle,
+  pageDescription,
+  heroImage,
+  ogType = "website",
+  noindex = false,
+} = Astro.props;
+
+const siteName = "Shaka Agency";
+const fullTitle = pageTitle.includes(siteName) ? pageTitle : `${pageTitle} | ${siteName}`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const ogImage = new URL(heroImage ? heroImage.src : "/og-default.jpg", Astro.url).href;
+---
+<!doctype html>
+<html lang="es">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" type="image/png" href="/favicon.png" />
+      <link rel="sitemap" href="/sitemap-index.xml" />
+      <title>{fullTitle}</title>
+      {pageDescription && <meta name="description" content={pageDescription} />}
+      <link rel="canonical" href={canonical} />
+      {noindex && <meta name="robots" content="noindex" />}
+
+      <meta property="og:title" content={fullTitle} />
+      {pageDescription && <meta property="og:description" content={pageDescription} />}
+      <meta property="og:type" content={ogType} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:site_name" content={siteName} />
+      <meta property="og:locale" content="es_ES" />
+      <meta property="og:image" content={ogImage} />
+      <meta name="twitter:card" content="summary_large_image" />
+    </head>
+    <body>
+        <Header />
+        <slot />
+        <Spacer size="4rem" />
+        <Footer />
+    </body>
+<script>
+  import Lenis from 'lenis';
+  import 'lenis/dist/lenis.css';
+
+  new Lenis({ autoRaf: true });
+</script>
+</html>
+

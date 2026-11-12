@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
+import Lastposts from "../components/Lastposts.astro";
+import Spacer from '../components/Spacer.astro';
+ 
+const { pageTitle, pageDescription, heroImage, tags = [], base = "/blog", pubDate, postId } = Astro.props;
+const fecha = pubDate
+  ? pubDate
+      .toLocaleDateString("es-ES", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        timeZone: "UTC",
+      })
+      .replaceAll("/", "-")
+  : "";
+
+// Los 3 posts más recientes, sin contar el que se está viendo
+const ultimosPosts = (await getCollection("blog", ({ data }) => !data.draft))
+  .filter((post) => post.id !== postId)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  heroImage={heroImage}
+>
+  <section class="nopadding-top blog">
+    <div class="container">
+        <div class="col-7">
+          <Image src={heroImage} alt="Imagen SEO" class="img-hero-postblog" />
+          <div class="info-post">
+            <div class="categories">{tags.length > 0 && (
+                <ul class="post-categories">
+                  {tags.map((tag) => (
+                    <li><a href={`${base}/categoria/${tag}/`}>{tag}</a></li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div class="date-post">
+              <p>Publicado: {fecha}</p>
+            </div>
+          </div>
+          <h1 class="title-blog">{pageTitle}</h1>
+            <slot />
+        </div>
+        <div class="col-4">
+            <h3>Últimos posts</h3>
+            <Spacer size = "1.5rem" />
+            {ultimosPosts.map((post) => (
+            <Lastposts
+              title={post.data.title}
+              url={`/blog/${post.id}/`}
+              heroImage={post.data.heroImage}
+              heroImageAlt={post.data.heroImageAlt}
+            />
+          ))}
+        </div>
+    </div>
+  </section>
+</BaseLayout>

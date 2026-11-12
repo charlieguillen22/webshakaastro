@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import Button from '../components/Button.astro';
+
+const { portfolios } = Astro.props;
+---
+<div class="container portfolio">
+    {portfolios.map((portfolio, i) => (
+        <div class={`col-portfolio ${i === 0 ? 'active' : ''}`}>
+            <div class="portfolio-inner">
+                <p class="portfolio-date">{portfolio.data.pubDate.getFullYear()}</p>
+                <div class="portfolio-info">
+                    <h3 class="portfolio-title">{portfolio.data.title}</h3>
+                    <Button href={`/portfolio/${portfolio.id}`} texto="Ver proyecto" icono="andrsrxn:arrow-corner-down-right" /> 
+                </div>
+                <div class="portfolio-thumbnail">
+                    <div class="object__image--fit">
+                        <a href={`/portfolio/${portfolio.id}`}>
+                            {portfolio.data.heroImage && (
+                                <Image
+                                    class="portfolio-img"
+                                    src={portfolio.data.heroImage}
+                                    alt={portfolio.data.heroImageAlt ?? portfolio.data.title}
+                                />
+                            )}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    ))}
+</div>
+
+<script>
+    const cols = document.querySelectorAll<HTMLElement>('.col-portfolio');
+
+    cols.forEach((col) => {
+        col.addEventListener('mouseenter', () => {
+            cols.forEach((c) => c.classList.toggle('active', c === col));
+        });
+    });
+</script>

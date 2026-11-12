@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { href, texto, icono, type = "button", size="normal" } = Astro.props;
+const Tag = href ? "a" : "button";
+---
+
+<Tag
+  href={href}
+  type={href ? undefined : type}
+  class:list={["btn", { "btn--large": size === "large" }]}
+>
+  {icono && (
+    <span class="btn-icono">
+      <Icon name={icono} />
+    </span>
+  )}
+
+  <span class="btn-texto">
+    <span>{texto}</span>
+  </span>
+</Tag>

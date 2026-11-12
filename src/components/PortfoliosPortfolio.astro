@@ -1,0 +1,114 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from '../components/Button.astro';
+
+const { portfolios } = Astro.props;
+const first = portfolios[0];
+---
+
+<section class="pslider">
+  <div class="pslider-stage">
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper">
+        {portfolios.map((portfolio) => (
+          <div
+            class="swiper-slide"
+            data-title={portfolio.data.title}
+            data-year={portfolio.data.pubDate.getFullYear()}
+            data-url={`/portfolio/${portfolio.id}/`}
+          >
+            <img
+              src={portfolio.data.heroImage.src}
+              alt={portfolio.data.heroImageAlt ?? portfolio.data.title}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="pslider-ui">
+      <button class="pslider-btn pslider-prev" aria-label="Anterior">
+        <Icon name="andrsrxn:arrow-left" size={22} />
+      </button>
+      <button class="pslider-btn pslider-next" aria-label="Siguiente">
+        <Icon name="andrsrxn:arrow-right" size={22} />
+      </button>
+      <h2 class="pslider-title">{first.data.title}</h2>
+      <span class="pslider-year">{first.data.pubDate.getFullYear()}</span>
+      <div class="pslider-cta">
+        <Button href={`/portfolio/${first.id}/`} texto="Ver proyecto" icono="andrsrxn:arrow-corner-down-right" />
+      </div>
+    </div>
+  </div>
+
+  <div class="pslider-thumbs">
+    {portfolios.map((portfolio) => (
+      <button class="pslider-thumb" type="button" aria-label={portfolio.data.title}>
+        <img src={portfolio.data.heroImage.src} alt="" loading="lazy" />
+      </button>
+    ))}
+  </div>
+</section>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation } from "swiper/modules";
+  import "swiper/css";
+
+  const root = document.querySelector(".pslider");
+  const ui = root.querySelector(".pslider-ui");
+  const title = root.querySelector(".pslider-title");
+  const year = root.querySelector(".pslider-year");
+  const cta = root.querySelector(".pslider-cta a");
+  const thumbsBox = root.querySelector(".pslider-thumbs");
+  const thumbs = root.querySelectorAll(".pslider-thumb");
+
+  const swiper = new Swiper(".portfolio-swiper", {
+    modules: [Navigation],
+    slidesPerView: "auto",
+    centeredSlides: true,
+    loop: true,
+    loopAdditionalSlides: 2,
+    spaceBetween: 16,
+    grabCursor: true,
+    slideToClickedSlide: true,
+    navigation: {
+      prevEl: ".pslider-prev",
+      nextEl: ".pslider-next",
+    },
+    breakpoints: {
+      769: { spaceBetween: "23%" },
+    },
+  });
+
+  const setActiveThumb = () => {
+    thumbs.forEach((thumb, i) => {
+      thumb.classList.toggle("is-active", i === swiper.realIndex);
+    });
+    const active = thumbs[swiper.realIndex];
+    thumbsBox.scrollTo({
+      left: active.offsetLeft - thumbsBox.clientWidth / 2 + active.clientWidth / 2,
+      behavior: "smooth",
+    });
+  };
+
+  thumbs.forEach((thumb, i) => {
+    thumb.addEventListener("click", () => swiper.slideToLoop(i));
+  });
+
+  swiper.on("slideChange", () => {
+    const data = swiper.slides[swiper.activeIndex].dataset;
+    ui.classList.add("is-out");
+    setTimeout(() => {
+      title.textContent = data.title;
+      year.textContent = data.year;
+      cta.href = data.url;
+      ui.classList.remove("is-out");
+    }, 200);
+
+    setActiveThumb();
+  });
+
+  setActiveThumb();
+</script>

@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import Button from '../components/Button.astro';
+import Spacer from '../components/Spacer.astro';
+
+const { title, url, heroImage, heroImageAlt = "" } = Astro.props;
+---
+
+<div class="wrapper-lastposts">
+    {heroImage && (
+        <a href={url}><Image src={heroImage} alt={heroImageAlt} class="img-featured-lastposts" /></a>
+    )}
+    <div class="text-wrapper-lastposts">
+        <h4><a href={url}>{title}</a></h4>
+        <Spacer size = "1rem" />
+        <Button href={url} texto="Leer más" icono="andrsrxn:arrow-corner-down-right" />
+    </div>
+</div>

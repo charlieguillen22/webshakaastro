@@ -1,0 +1,62 @@
+---
+import Navigation from '../components/Navigation.astro';
+---
+<div class="header">
+    <div class="header-brand">
+        <a href="/" class="logo-header">Shaka Agency</a>
+    </div>
+
+    <!-- Botón hamburguesa: solo se ve en tablet y móvil (≤992px) -->
+    <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="header-panel"
+    >
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+    </button>
+
+    <!-- En escritorio este contenedor es transparente (display: contents) -->
+    <div class="header-panel" id="header-panel">
+        <div class="main-menu">
+            <Navigation />
+        </div>
+        <div class="contact">
+            <a href="mailto:info@shakagency.es">info@shakagency.es</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const header = document.querySelector<HTMLElement>(".header");
+    const toggle = header?.querySelector<HTMLButtonElement>(".menu-toggle");
+    const panel = header?.querySelector<HTMLElement>(".header-panel");
+
+    if (header && toggle && panel) {
+        const setOpen = (abrir: boolean) => {
+            header.classList.toggle("is-open", abrir);
+            document.documentElement.classList.toggle("menu-open", abrir);
+            toggle.setAttribute("aria-expanded", String(abrir));
+            toggle.setAttribute("aria-label", abrir ? "Cerrar menú" : "Abrir menú");
+        };
+
+        toggle.addEventListener("click", () => {
+            setOpen(!header.classList.contains("is-open"));
+        });
+
+        // Al pulsar un enlace del menú, se cierra
+        panel.addEventListener("click", (e) => {
+            if ((e.target as HTMLElement).closest("a")) setOpen(false);
+        });
+
+        // Escape cierra el menú
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") setOpen(false);
+        });
+
+        // Si se pasa a pantalla grande (p. ej. girar una tablet), se resetea
+        window.matchMedia("(max-width: 992px)").addEventListener("change", () => setOpen(false));
+    }
+</script>

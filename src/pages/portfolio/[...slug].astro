@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from "astro:content";
+import PortfoliosLayout from "../../layouts/PortfoliosLayout.astro";
+
+export async function getStaticPaths() {
+  const portfolios = await getCollection("portfolio", ({ data }) => !data.draft);
+  return portfolios.map((portfolio) => ({
+    params: { slug: portfolio.id },
+    props: { portfolio },
+  }));
+}
+
+const { portfolio } = Astro.props;
+const { Content } = await render(portfolio);
+const { title, description, contexto, diseño, desarrollo, resultado, heroImage, heroImageAlt, tags = [], pubDate, urlWeb } = portfolio.data;   // ← de post.data, no de Astro.props
+---
+
+<PortfoliosLayout
+  pageTitle={title}
+  pageDescription={description}
+  contexto={contexto}
+  diseño={diseño}
+  desarrollo={desarrollo}
+  resultado={resultado}
+  heroImage={heroImage}
+  heroImageAlt={heroImageAlt}
+  tags={tags}
+  pubDate={pubDate}
+  urlWeb={urlWeb}
+  postId={portfolio.id}
+>
+  <Content />
+</PortfoliosLayout>

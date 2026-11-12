@@ -1,16 +1,269 @@
 ---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import imageHero from "../assets/10-2026/img-shaka.jpg";
+import imgSurf from "../assets/10-2026/surfing-shaka.gif";
+import imgWeb from "../assets/10-2026/web-ohmycrepe.jpg";
+import Button from '../components/Button.astro';
+import Spacer from "../components/Spacer.astro";
+import Marquee from "../components/Marquee.astro";
+import imgWebsurf from "../assets/10-2026/websurf.png";
+import Lastpostshome from '../components/Lastpostshome.astro';
+import PortfoliosHome from '../components/PortfoliosHome.astro';
+
+const pageTitle = "Agencia Creativa Shaka Agency";
+const pageDescription= "Shaka Agency es una Agencia de Marketing Digital en Málaga especializada en diseño web, diseño gráfico, diseño de material corporativo, redes sociales."
+
+const ultimosPosts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+ const portfolios = (await getCollection("portfolio", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+  <section class="section-hero">
+    <div class="container">
+      <div class="col-4">
+        <p class="textherohome">
+          Hacemos que tu marca sea conocida. Juntos.
+        </p>
+      </div>
+      <div class="col-4">
+        <div>
+          <Image src={imageHero} alt="Mano haciendo símbolo shaka" class="img-hero" />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="titleherohome">
+        <h1>Agencia creativa en Málaga</h1>
+        <p>Desarrollamos tu estrategia digital</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="nopadding-top">
+    <p class="logohome">Shaka Agency</p>
+  </section>
+  <section class="alternative">
+    <div class="container">
+      <div class="col-12">
+        <Marquee />
+      </div>
+    </div>
+  </section>
+  <section>
+    <Spacer size = "3rem" />
+    <div class="container">
+      <div class="col-1">
+        <h2 class="subtitle">Qué hacemos</h2>
+      </div>
+      <div class="col-9">
+        <p class="text-big">Somos expertos en diseño, tanto de páginas web como de diseño gráfico. Nos encanta crear contenido exclusivo. 
+          Desarrollamos páginas web únicas, dieñamos tu imagen de marca, y encontramos tu público objetivo.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="col-2">
+        <h2 class="subtitle">Cómo lo hacemos</h2>
+      </div>
+      <div class="col-4">
+        <p class="text-big">Nos adaptamos. ¿Qué necesitas? Nosotros lo hacemos. En Shaka Agency contamos con un equipo multidisciplinar capaz de 
+          de desarrollar la estrategia digital más óptima para tu negocio. Nos reunimos, planificamos, te enseñamos lo que hacemos, y publicamos.
+        </p>
+          <Spacer size = "4rem" />
+        <Button href="/contacto/" texto="Hablemos" icono="andrsrxn:arrow-corner-down-right" />
+      </div>
+      <div class="col-6">
+        <Image src={imgSurf} alt="Hombre surfeando con estilo" class="gif-surfing" />
+      </div>
+    </div>
+  </section>
+  <section class="nopadding-top">
+    <div class="container">
+      <div class="col-2">
+        <p class="text-big">Shaka Agency</p>
+        <p>Te ofrecemos servicios de marketing digital de todo tipo, de gran calidad, y diseño. Solicita una cita con nosotros 
+          sobre el servicio que necesites y hablamos, después de estudiar vuestra necesidad te ofreceremos la mejor solución.</p>
+        <Spacer size = "2rem" />
+        <Button href="/nuestros-servicios/" texto="Ver servicios" icono="andrsrxn:arrow-corner-down-right" />
+      </div>
+      <div class="col-10">
+        <Image src={imgWeb} alt="Web ohmycrepe" class="img-home" />
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="col-2">
+        <h2 class="subtitle">Servicios & soluciones</h2>
+      </div>
+      <div class="col-10">
+        <p class="litle-text">Shaka Agency nace con la intención de poder facilitarte las tareas relacionadas con la visibilidad de tu negocio, 
+          pudiendo liberar al pequeño y mediano empresario de tareas que le quitan tiempo para realizar su actividad diaria 
+          como por ejemplo gestionar las redes sociales o la misma página web.</p>
+      </div>
+    </div>
+    <Spacer size = "3rem" />
+    <div class="container">
+      <div class="col-12">
+        <div class="services-home">
+          <div class="service web">
+            <div class="img-service">
+              <Image src={imgWebsurf} alt="Web de tienda de surf" />
+            </div>
+            <div class="text-service">
+              <h3>Desarrollo web</h3>
+              <div class="wrapper-services">
+                <div class="wrapper-text">
+                  <p>No estar en internet ya no es una opción.</p>
+                  <p>Desarrollo, diseño web</p>
+                  <p>UX / UI</p>
+                </div>
+                <Button href="/nuestros-servicios/#diseno-web/" texto="Ver servicio" icono="andrsrxn:arrow-corner-down-right" />
+              </div>
+            </div>
+          </div>
+          <div class="service branding">
+            <div class="img-service">
+              <Image src={imageHero} alt="Mano haciendo símbolo shaka" />
+            </div>
+            <div class="text-service">
+              <h3>Branding</h3>
+              <div class="wrapper-services">
+                <div class="wrapper-text">
+                  <p>Creamos tu identidad.</p>
+                  <p>Imagen corporativa.</p>
+                  <p>Diseño</p>
+                </div>
+                <Button href="/nuestros-servicios/#branding/" texto="Ver servicio" icono="andrsrxn:arrow-corner-down-right" />
+              </div>
+            </div>
+          </div>
+          <div class="service seo">
+            <div class="img-service">
+              <Image src={imageHero} alt="Mano haciendo símbolo shaka" />
+            </div>
+            <div class="text-service">
+              <h3>Posicionamiento</h3>
+              <div class="wrapper-services">
+                <div class="wrapper-text">
+                  <p>Hacemos que te encuentren.</p>
+                  <p>Posicionamiento SEO.</p>
+                  <p>Métricas Google.</p>
+                </div>
+                <Button href="/nuestros-servicios/#seo/" texto="Ver servicio" icono="andrsrxn:arrow-corner-down-right" />
+              </div>
+              <p></p>
+            </div>
+          </div>
+          <div class="service rrss">
+            <div class="img-service">
+              <Image src={imageHero} alt="Mano haciendo símbolo shaka" />
+            </div>
+            <div class="text-service">
+              <h3>Redes sociales</h3>
+              <div class="wrapper-services">
+                <div class="wrapper-text">
+                  <p>Gestionamos tus redes sociales.</p>
+                  <p>Con tu presencia en redes mejoramos el tráfico.</p>
+                  <p>Diseño de publicaciones y vídeos.</p>
+                </div>
+                <Button href="/nuestros-servicios/#redes/" texto="Ver servicio" icono="andrsrxn:arrow-corner-down-right" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="col-2">
+        <h2 class="subtitle">Casos de éxito</h2>
+      </div>
+      <div class="col-10 center">
+        <div class="text-block">
+          <p class="text-big">Algunos de nuestros trabajos destacados</p>
+          <Spacer size="2rem" />
+          <p>Marcas con personalidad, webs que funcionan y contenido que conecta. Estos son algunos de nuestros trabajos.</p>
+        </div>
+        <div>
+          <Button href="/portfolio-shaka-agency/" texto="Ver portfolio" icono="andrsrxn:arrow-corner-down-right" />
+        </div>
+      </div>
+    </div>
+    <Spacer size="3rem" />
+    <PortfoliosHome portfolios={portfolios} />
+
+  </section>
+  <section>
+    <div class="container ">
+      <div class="col-1">
+        <h2 class="subtitle">Blog</h2>
+      </div> 
+      <div class="col-5">
+        <p class="text-big">A veces escribimos sobre cositas de actualidad</p>
+      </div>
+    </div>
+    <Spacer size="2rem" />
+    <div class="container">
+      <div class="col-12">
+        <div class="swiper ultimos-posts">
+          <div class="swiper-wrapper">
+            {ultimosPosts.map((post) => (
+              <Lastpostshome
+                title={post.data.title}
+                description={post.data.description}
+                url={`/blog/${post.id}/`}
+                heroImage={post.data.heroImage}
+                heroImageAlt={post.data.heroImageAlt}
+              />
+            ))}
+          </div>
+
+          <div class="swiper-pagination"></div>
+          <div class="slider-nav">
+            <div class="swiper-button-prev">
+              <Icon name="andrsrxn:arrow-left" />
+            </div>
+            <div class="swiper-button-next">
+              <Icon name="andrsrxn:arrow-right" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+    import Swiper from 'swiper';
+  import { Navigation, Pagination } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+
+  new Swiper('.ultimos-posts', {
+    modules: [Navigation, Pagination],
+    slidesPerView: 1,
+    spaceBetween: 32,
+    loop: true,
+    navigation: {
+      nextEl: '.ultimos-posts .swiper-button-next',
+      prevEl: '.ultimos-posts .swiper-button-prev',
+    },
+    pagination: {
+      el: '.ultimos-posts .swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
