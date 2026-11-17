@@ -169,9 +169,9 @@ h4 {
     font-size: 1rem;
 }
 
-p, a {
+p, a, li {
     font-size: 16px;
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: 1rem;
 }
 
@@ -192,6 +192,10 @@ a {
     transition: all .3s ease-in-out;
 }
 
+strong {
+    font-family: 'Aeonik Pro Bold';
+    font-weight: 800;
+}
 
 /******** Espacio entre secciones ********/
 section {
@@ -382,10 +386,15 @@ section.section-portfolio {
 }
 
 /******** Footer ********/
-footer, footer a, footer p, footer h3, footer span {
+footer {
+    position: relative;
     background: var(--color-text);
-    color: var(--color-bg);
     border-radius: 50px 50px 0px 0px;
+    z-index: 10;
+}
+
+footer a, footer p, footer h3, footer span {
+    color: var(--color-bg);
 }
 
 section.copyright-section {
@@ -578,6 +587,7 @@ section p.logohome {
     max-width: 400px;
 }
 
+
 /*Portfolio*/
 .col-portfolio {
     flex: none;
@@ -703,6 +713,40 @@ h3.portfolio-title {
     display: none;
 }
 
+/******** Nuestros servicios ********/
+.text-service {
+    width: 100%;
+}
+
+.text-service h2 {
+    text-transform: none;
+    font-size: 7rem;
+    margin-bottom: 0;
+}
+
+section.section-service {
+    background: var(--color-bg);
+    position: sticky;
+    top: 0;       
+    min-height: 100vh;  
+    border-top: solid 3px var(--color-button);
+}
+
+.service-photo {
+    position: absolute;
+    top: 3.5rem;
+    right: 3rem;
+    width: 15%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.keywords {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
 
 /******** Plantilla página blog y categorías ********/
 .grid-post {
@@ -892,6 +936,18 @@ section.blog h2 {
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: contrast(0.5);
+  transition: filter .3s ease-in-out;
+}
+
+.pslider .swiper-slide img:hover {
+  filter: contrast(1);
+}
+
+.pslider-link {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .pslider .pslider-ui {
@@ -1421,6 +1477,39 @@ section.section-info-portfolio {
     }
   }
 
+/******** Whatsapp botón flotante ********/
+.whatsapp-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
+}
+
+.whatsapp-float:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+@media print {
+  .whatsapp-float { display: none; }
+}
+
+
+
 /***********************************************
 RESPONSIVE · base (escritorio)
 ************************************************/
@@ -1467,6 +1556,7 @@ section p.logohome {
 }
 
 /* Títulos de los servicios de la home */
+.text-service h2, 
 .text-service h3 {
     font-size: clamp(3.5rem, 6vw, 7rem);
 }

@@ -10,7 +10,10 @@ import imgWeb from "../assets/10-2026/web-ohmycrepe.jpg";
 import Button from '../components/Button.astro';
 import Spacer from "../components/Spacer.astro";
 import Marquee from "../components/Marquee.astro";
-import imgWebsurf from "../assets/10-2026/websurf.png";
+import imgWebsurf from "../assets/10-2026/desarrollo-web.png";
+import imgBranding from "../assets/10-2026/branding.png";
+import imgSeo from "../assets/10-2026/posicionamiento.png";
+import imgRedes from "../assets/10-2026/redes.png";
 import Lastpostshome from '../components/Lastpostshome.astro';
 import PortfoliosHome from '../components/PortfoliosHome.astro';
 
@@ -134,7 +137,7 @@ const ultimosPosts = (await getCollection("blog", ({ data }) => !data.draft))
           </div>
           <div class="service branding">
             <div class="img-service">
-              <Image src={imageHero} alt="Mano haciendo símbolo shaka" />
+              <Image src={imgBranding} alt="Tabla de surf con pegatinas de marcas de surf" />
             </div>
             <div class="text-service">
               <h3>Branding</h3>
@@ -150,7 +153,7 @@ const ultimosPosts = (await getCollection("blog", ({ data }) => !data.draft))
           </div>
           <div class="service seo">
             <div class="img-service">
-              <Image src={imageHero} alt="Mano haciendo símbolo shaka" />
+              <Image src={imgSeo} alt="Hombre surfeando" />
             </div>
             <div class="text-service">
               <h3>Posicionamiento</h3>
@@ -167,7 +170,7 @@ const ultimosPosts = (await getCollection("blog", ({ data }) => !data.draft))
           </div>
           <div class="service rrss">
             <div class="img-service">
-              <Image src={imageHero} alt="Mano haciendo símbolo shaka" />
+              <Image src={imgRedes} alt="Redes sociales tipo instagram de surf" />
             </div>
             <div class="text-service">
               <h3>Redes sociales</h3>
@@ -197,7 +200,7 @@ const ultimosPosts = (await getCollection("blog", ({ data }) => !data.draft))
           <p>Marcas con personalidad, webs que funcionan y contenido que conecta. Estos son algunos de nuestros trabajos.</p>
         </div>
         <div>
-          <Button href="/portfolio-shaka-agency/" texto="Ver portfolio" icono="andrsrxn:arrow-corner-down-right" />
+          <Button href="/portfolio/" texto="Ver portfolio" icono="andrsrxn:arrow-corner-down-right" />
         </div>
       </div>
     </div>

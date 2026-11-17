@@ -9,7 +9,6 @@
   heroImage: "../assets/11-2026/webdesign-millinguals.jpeg"   # opcional
   heroImageAlt: "imagen diseño web Millinguals"            # opcional
   tags: ["Diseño web", "Desarrollo web"]
-  imgbg: "../assets/11-2026/img-fondo-millinguals.jpg"
   urlWeb: "https://millinguals.com/"
   draft: false
 ---

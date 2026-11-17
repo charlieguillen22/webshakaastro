@@ -1,0 +1,169 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Spacer from "../components/Spacer.astro";
+
+import { Image } from "astro:assets";
+import imgWebsurf from "../assets/10-2026/desarrollo-web.png";
+import imgBranding from "../assets/10-2026/branding.png";
+import imgSeo from "../assets/10-2026/posicionamiento.png";
+import imgRedes from "../assets/10-2026/redes.png";
+
+const pageTitle= "Servicios de marketing digital"
+const pageDescription= "Shaka Agency es una Agencia de Marketing Digital en Málaga especializada en diseño web, diseño gráfico, diseño de material corporativo, redes sociales."
+
+---
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+<section class="section-service">
+    <div class="container">
+        <div class="col-12">
+            <div class="text-service">
+                <h2>Desarrollo web</h2>
+            </div>
+        </div>
+    </div>
+    <Spacer size="2rem" />
+    <div class="container">
+        <div class="col-3">
+            <p>Una web no es solo una página bonita: es tu mejor escaparate y tu comercial las 24 horas. 
+            En Shaka Agency desarrollamos sitios rápidos, seguros y a medida, pensados para que tus clientes 
+            te encuentren, te entiendan y den el paso de contactarte o comprar.</p>
+            <p>Y no empezamos por el código. Antes de programar, diseñamos. Creamos el diseño web previo, 
+                con estructura, estilo visual y experiencia de usuario, alineado con tu marca y tus objetivos. 
+                Lo ves, lo ajustamos contigo y solo cuando está aprobado lo llevamos a desarrollo. 
+                Así evitamos sorpresas y el resultado final es exactamente lo que imaginabas, o mejor.</p>
+        </div>
+        <div class="col-3">
+            <p class="text-big">Qué incluye</p>
+            <ul>
+                <li><strong>Diseño web a medida:</strong> estructura, interfaz y estilo visual pensados para tu marca.</li>
+                <li><strong>Desarrollo adaptado a todos los dispositivos:</strong> móvil, tablet y escritorio.</li>
+                <li><strong>Velocidad y rendimiento:</strong> webs ligeras que cargan rápido.</li>
+                <li><strong>Acompañamiento tras el lanzamiento:</strong> seguimos a tu lado cuando la web ya está online.</li>
+            </ul>
+        </div>
+        <div class="col-4 keywords">
+            <p class="text-big">No estar en internet ya no es una opción.</p>
+            <p class="text-big">Desarrollo, diseño web</p>
+            <p class="text-big">UX / UI</p>
+        </div>
+        <div class="service-photo">
+            <Image src={imgWebsurf} alt="Imagen del servicio de diseño y desarrollo web" />
+        </div>
+    </div>
+</section>
+<section class="section-service">
+    <div class="container">
+        <div class="col-12">
+            <div class="text-service">
+                <h2>Branding</h2>
+            </div>
+        </div>
+    </div>
+    <Spacer size="2rem" />
+    <div class="container">
+        <div class="col-3">
+            <p>Tu marca es lo que la gente piensa y siente cuando oye tu nombre, mucho más que un logo. 
+            En Shaka Agency construimos identidades con personalidad propia, coherentes y memorables, 
+            que te diferencian de la competencia y conectan con las personas adecuadas.</p>
+            <p>Partimos de lo importante: quién eres, qué ofreces y a quién te diriges. Con esa base definimos 
+                tu posicionamiento, tu voz y tu estilo visual, y lo plasmamos en un sistema de marca claro y 
+                fácil de aplicar. Así, cada vez que alguien te vea, en una web, en redes o en un cartel, 
+                te reconocerá al instante.</p>
+        </div>
+        <div class="col-3">
+            <p class="text-big">Qué incluye</p>
+            <ul>
+                <li><strong>Estrategia de marca:</strong> propósito, valores, público y posicionamiento.</li>
+                <li><strong>Identidad visual:</strong> logotipo, paleta de color y tipografías a medida.</li>
+                <li><strong>Tono y personalidad:</strong> la manera en que tu marca habla y se comunica.</li>
+                <li><strong>Manual de marca:</strong> pautas claras para usar tu identidad con coherencia.</li>
+            </ul>
+        </div>
+        <div class="col-4 keywords">
+            <p class="text-big">Una marca fuerte no se improvisa, se construye.</p>
+            <p class="text-big">Identidad, estrategia</p>
+            <p class="text-big">Logo / Manual de marca</p>
+        </div>
+        <div class="service-photo">
+            <Image src={imgBranding} alt="Imagen del servicio de branding e identidad de marca" />
+        </div>
+    </div>
+</section>
+<section class="section-service">
+    <div class="container">
+        <div class="col-12">
+            <div class="text-service">
+                <h2>Posicionamiento</h2>
+            </div>
+        </div>
+    </div>
+    <Spacer size="2rem" />
+    <div class="container">
+        <div class="col-3">
+            <p>Tener una web no basta si nadie la encuentra. Cuando alguien busca lo que ofreces en Google, 
+            tienes que estar ahí. En Shaka Agency trabajamos tu posicionamiento para que aparezcas 
+            en los primeros resultados y te visiten personas que ya están buscando tus servicios.</p>
+            <p>Analizamos cómo buscan tus clientes, estudiamos a tu competencia y optimizamos tu web 
+                para que sea más visible, más rápida y más relevante. Sin trucos ni atajos: 
+                una estrategia sólida y medible, que va ganando fuerza con el tiempo y te trae tráfico 
+                de calidad de forma constante.</p>
+        </div>
+        <div class="col-3">
+            <p class="text-big">Qué incluye</p>
+            <ul>
+                <li><strong>Estudio de palabras clave:</strong> descubrimos qué buscan realmente tus clientes.</li>
+                <li><strong>SEO técnico y on-page:</strong> estructura, velocidad y contenidos optimizados.</li>
+                <li><strong>Contenidos que posicionan:</strong> textos pensados para personas y para buscadores.</li>
+                <li><strong>Informes y seguimiento:</strong> medimos resultados y ajustamos la estrategia cada mes.</li>
+            </ul>
+        </div>
+        <div class="col-4 keywords">
+            <p class="text-big">Si no apareces en Google, no existes para tus clientes.</p>
+            <p class="text-big">SEO, posicionamiento web</p>
+            <p class="text-big">Tráfico / Visibilidad</p>
+        </div>
+        <div class="service-photo">
+            <Image src={imgSeo} alt="Imagen del servicio de posicionamiento web y SEO" />
+        </div>
+    </div>
+</section>
+<section class="section-service">
+    <div class="container">
+        <div class="col-12">
+            <div class="text-service">
+                <h2>Redes sociales</h2>
+            </div>
+        </div>
+    </div>
+    <Spacer size="2rem" />
+    <div class="container">
+        <div class="col-3">
+            <p>Las redes sociales son el lugar donde tu audiencia pasa su tiempo, y donde tu marca puede 
+            dejar de ser un desconocido para convertirse en una referencia. En Shaka Agency gestionamos 
+            tus perfiles con una estrategia clara, contenido cuidado y una voz propia que conecta de verdad 
+            con tu comunidad.</p>
+            <p>No publicamos por publicar. Definimos qué quieres conseguir, a quién te diriges y en qué 
+                plataformas tiene sentido estar. Después creamos los contenidos, los planificamos y 
+                los publicamos con constancia, midiendo qué funciona para mejorar mes a mes. 
+                Tú te centras en tu negocio; nosotros, en que tu marca se vea y se escuche.</p>
+        </div>
+        <div class="col-3">
+            <p class="text-big">Qué incluye</p>
+            <ul>
+                <li><strong>Estrategia y calendario de contenidos:</strong> objetivos claros y publicaciones planificadas.</li>
+                <li><strong>Creación de contenido:</strong> diseños, vídeos y textos alineados con tu marca.</li>
+                <li><strong>Gestión de comunidad:</strong> respondemos, interactuamos y cuidamos a tu audiencia.</li>
+                <li><strong>Análisis y mejora continua:</strong> informes de resultados y ajustes constantes.</li>
+            </ul>
+        </div>
+        <div class="col-4 keywords">
+            <p class="text-big">Tu marca tiene mucho que contar. Hagamos que se escuche.</p>
+            <p class="text-big">Contenido, comunidad</p>
+            <p class="text-big">Estrategia / Social media</p>
+        </div>
+        <div class="service-photo">
+            <Image src={imgRedes} alt="Imagen del servicio de gestión de redes sociales" />
+        </div>
+    </div>
+</section>
+</BaseLayout>

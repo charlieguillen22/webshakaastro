@@ -17,11 +17,13 @@ const first = portfolios[0];
             data-year={portfolio.data.pubDate.getFullYear()}
             data-url={`/portfolio/${portfolio.id}/`}
           >
-            <img
-              src={portfolio.data.heroImage.src}
-              alt={portfolio.data.heroImageAlt ?? portfolio.data.title}
-              loading="lazy"
-            />
+            <a href={`/portfolio/${portfolio.id}/`} class="pslider-link" draggable="false">
+              <img
+                src={portfolio.data.heroImage.src}
+                alt={portfolio.data.heroImageAlt ?? portfolio.data.title}
+                loading="lazy"
+              />
+            </a> 
           </div>
         ))}
       </div>
