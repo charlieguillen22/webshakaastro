@@ -3,6 +3,9 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Postblog from '../../../components/Postblog.astro';
 
+import { slugify } from '../../../utils/slugify';
+
+
 export async function getStaticPaths() {
   const posts = (await getCollection('blog', ({ data }) => !data.draft))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -10,7 +13,7 @@ export async function getStaticPaths() {
   const tags = [...new Set(posts.flatMap((post) => post.data.tags ?? []))];
 
   return tags.map((tag) => ({
-    params: { tag },
+    params: { tag: slugify(tag) },
     props: {
       tag,
       posts: posts.filter((post) => post.data.tags?.includes(tag)),

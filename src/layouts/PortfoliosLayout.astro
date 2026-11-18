@@ -4,6 +4,9 @@ import BaseLayout from "./BaseLayout.astro";
 import Spacer from '../components/Spacer.astro';
 import Button from "../components/Button.astro";
 
+import { slugify } from '../utils/slugify'; // ajusta la ruta según el archivo
+
+
 const { pageTitle, pageDescription, contexto, diseño, desarrollo, resultado, heroImage, heroImageAlt, tags = [], base = "/portfolio", pubDate, urlWeb } = Astro.props;
 const year = pubDate ? pubDate.getUTCFullYear() : "";
 
@@ -27,7 +30,7 @@ const year = pubDate ? pubDate.getUTCFullYear() : "";
           <p class="title-info">Categorías</p>
           <ul class="text-info">
             {tags.map((tag) => (
-              <li><a href={`/portfolio/categoria/${tag}/`}>{tag}</a></li>
+              <li><a href={`/portfolio/categoria/${slugify(tag)}/`}>{tag}</a></li>
             ))}
           </ul>
         </div>

@@ -2,3 +2,9 @@ User-agent: *
 Allow: /
 
 Sitemap: https://shakagency.es/sitemap-index.xml
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /

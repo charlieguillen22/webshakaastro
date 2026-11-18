@@ -1,4 +1,23 @@
-/******** Reset ********/
+/***********************************************
+ÍNDICE
+1. Reset
+2. Fuentes (@font-face)
+3. Colores (variables)
+4. Tipografía (base + tamaños fluidos)
+5. Layout (secciones, container, columnas)
+6. Utilidades (aparecer al hacer scroll)
+7. Componentes: botones, menús, header, footer,
+   redes sociales, formularios, whatsapp
+8. Páginas: home, servicios, blog, contacto,
+   portfolio (listado y plantilla), quiénes somos
+9. Responsive: 1337px, menú hamburguesa (992px),
+   tablet (651–992px) y móvil (hasta 650px)
+************************************************/
+
+
+/***********************************************
+1. RESET
+************************************************/
 *,
 *::before,
 *::after {
@@ -53,32 +72,10 @@ a {
     text-decoration: none;
 }
 
+
 /***********************************************
-Estilos globales
+2. FUENTES
 ************************************************/
-
-/******** Aparecer al hacer scroll ********/
-.js .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-    transition-delay: var(--delay, 0s);
-}
-
-.js .reveal.visible {
-    opacity: 1;
-    transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .js .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-}
-
-/******** Fuentes ********/
 @font-face {
     font-family: "BlauerNue";
     src: url("/fonts/BlauerNue-Regular.woff") format("woff");
@@ -103,20 +100,26 @@ Estilos globales
     font-display: swap;
 }
 
-/******** Colores (variables) ********/
+
+/***********************************************
+3. COLORES (variables)
+************************************************/
 :root {
     --color-bg: #E5E3DB;
     --color-title: #212125;
-    --color-text: #212125; 
+    --color-text: #212125;
     --color-button: #212125;
     --color-categories: #c25800;
     --color-bg-alt: #DBD8CD;
     --color-bg-footer: #212125;
     --color-title-footer: #E5E3DB;
-    --color-text-footer: #E5E3DB; 
+    --color-text-footer: #E5E3DB;
 }
 
-/******** Tipografías y colores ********/
+
+/***********************************************
+4. TIPOGRAFÍA
+************************************************/
 body {
     font-family: "Aeonik Pro Light", Georgia, serif;
     background-color: var(--color-bg);
@@ -134,17 +137,21 @@ h3 {
     margin-bottom: 0.75rem;
 }
 
+/* ---------- Títulos ----------
+   Escalan poco a poco con el ancho de pantalla.
+   clamp(mínimo, valor fluido, máximo): el máximo es el tamaño original de escritorio. */
+h1 {
+    font-size: clamp(2.5rem, 1.2rem + 7vw, 8rem);
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
 h1.title-normal {
     text-transform: none !important;
 }
 
-h1 {
-    font-size: 8rem;
-}
-
 h2 {
-    font-size: 2.5rem;
-    text-transform: uppercase;
+    font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem);
 }
 
 h2.subtitle {
@@ -152,8 +159,7 @@ h2.subtitle {
 }
 
 h3 {
-    font-size: 2rem;
-    text-transform: uppercase;
+    font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem);
 }
 
 h3.subtitle {
@@ -161,15 +167,18 @@ h3.subtitle {
 }
 
 h3.bigtitle {
-    font-size: 4rem;
-    text-transform:none;
+    font-size: clamp(2.75rem, 1.5rem + 4.2vw, 4rem);
+    text-transform: none;
 }
 
 h4 {
     font-size: 1rem;
 }
 
-p, a, li {
+/* ---------- Texto ---------- */
+p,
+a,
+li {
     font-size: 16px;
     line-height: 1.15;
     margin-bottom: 1rem;
@@ -177,7 +186,7 @@ p, a, li {
 
 p.text-big {
     font-family: 'Aeonik Pro Bold';
-    font-size: 2rem;;
+    font-size: clamp(1.5rem, 1rem + 1.4vw, 2rem);
     font-weight: 800;
 }
 
@@ -197,6 +206,41 @@ strong {
     font-weight: 800;
 }
 
+/* ---------- Tamaños fluidos de componentes ---------- */
+p.textherohome {
+    font-size: clamp(2rem, 1rem + 3vw, 3rem);
+}
+
+.title-about {
+    font-size: clamp(2.5rem, 1rem + 4.4vw, 4rem);
+}
+
+.title-blog {
+    font-size: clamp(2rem, 1.2rem + 2.2vw, 3rem);
+}
+
+/* Logo gigante "Shaka Agency" (home, quiénes somos y footer) */
+section p.logohome {
+    font-size: clamp(2.5rem, 15vw, 14rem);
+}
+
+/* Títulos de los servicios (home: h3 · página de servicios: h2) */
+.text-service h2,
+.text-service h3 {
+    text-transform: none;
+    font-size: clamp(3.5rem, 6vw, 7rem);
+    margin-bottom: 0;
+}
+
+.faq__titulo {
+    font-size: clamp(1.15rem, 0.9rem + 0.7vw, 1.5rem);
+}
+
+
+/***********************************************
+5. LAYOUT
+************************************************/
+
 /******** Espacio entre secciones ********/
 section {
     padding-block: 3.5em;
@@ -213,7 +257,7 @@ section.section-hero {
     padding-bottom: 1rem;
 }
 
-section.nopadding-top{
+section.nopadding-top {
     padding-top: 0;
 }
 
@@ -221,7 +265,6 @@ section.section-portfolio {
     min-height: 100vh;
     padding-top: 1rem;
     padding-bottom: 1rem;
-
 }
 
 /******** Ancho del contenido ********/
@@ -229,17 +272,18 @@ section.section-portfolio {
     display: flex;
     width: 100%;
     max-width: 1470px;
-    margin-inline: auto;   /* centra el contenido */
+    margin-inline: auto;    /* centra el contenido */
     padding-inline: 1.5rem; /* margen lateral en pantallas pequeñas */
     flex-wrap: wrap;
-    row-gap: 1.5rem; 
+    row-gap: 1.5rem;
 }
 
-/******** Columnas de un cointainer flex ********/
+/******** Columnas de un container flex ********/
 [class^="col-"] {
     box-sizing: border-box;
     padding-inline: 1.5rem;
 }
+
 .col-1  { width: 8.3333%; }
 .col-2  { width: 16.6667%; }
 .col-3  { width: 25%; }
@@ -253,8 +297,36 @@ section.section-portfolio {
 .col-11 { width: 91.6667%; }
 .col-12 { width: 100%; }
 
-.col-portfolio {width: 20%}
 
+/***********************************************
+6. UTILIDADES
+************************************************/
+
+/******** Aparecer al hacer scroll ********/
+.js .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0s);
+}
+
+.js .reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+
+/***********************************************
+7. COMPONENTES
+************************************************/
 
 /******** Botones ********/
 .btn {
@@ -278,6 +350,7 @@ section.section-portfolio {
 .btn-texto {
     position: relative;
 }
+
 .btn-texto::after {
     content: '';
     position: absolute;
@@ -290,6 +363,7 @@ section.section-portfolio {
     transform-origin: bottom left !important;
     transform: scaleX(1);
 }
+
 .btn-texto:hover::after {
     transform: scaleX(0);
     transform-origin: bottom right !important;
@@ -308,6 +382,7 @@ section.section-portfolio {
     position: relative;
     width: fit-content;
 }
+
 .menu-links li::after {
     content: '';
     position: absolute;
@@ -319,7 +394,6 @@ section.section-portfolio {
     transition: transform .25s ease-out;
     transform-origin: bottom left !important;
     transform: scaleX(1);
-
 }
 
 .menu-links li:hover::after {
@@ -327,8 +401,8 @@ section.section-portfolio {
     transform-origin: bottom right !important;
 }
 
-.header .main-menu .menu-links li::after{
-    display:none;
+.header .main-menu .menu-links li::after {
+    display: none;
 }
 
 /******** Header ********/
@@ -340,7 +414,7 @@ section.section-portfolio {
     position: sticky;
     top: 0;
     max-width: 1470px;
-    margin-inline: auto; 
+    margin-inline: auto;
     z-index: 999;
 }
 
@@ -352,7 +426,7 @@ section.section-portfolio {
 }
 
 .header .main-menu ul {
-    display:flex;
+    display: flex;
     gap: 1rem;
     align-items: center;
 }
@@ -380,9 +454,21 @@ section.section-portfolio {
     transform-origin: bottom left !important;
     transform: scaleX(1);
 }
+
 .header .contact:hover::after {
     transform: scaleX(0);
     transform-origin: bottom right !important;
+}
+
+/* Escritorio: el botón hamburguesa no se ve y el panel "desaparece"
+   para que logo, menú y email se comporten como antes
+   (el menú hamburguesa se define en el bloque responsive de 992px) */
+.menu-toggle {
+    display: none;
+}
+
+.header-panel {
+    display: contents;
 }
 
 /******** Footer ********/
@@ -393,7 +479,10 @@ footer {
     z-index: 10;
 }
 
-footer a, footer p, footer h3, footer span {
+footer a,
+footer p,
+footer h3,
+footer span {
     color: var(--color-bg);
 }
 
@@ -411,12 +500,164 @@ footer .btn-texto::after {
     background: var(--color-text-footer) !important;
 }
 
+/******** Redes sociales ********/
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    color: var(--color-title);
+    transition: all 0.3s ease-in-out;
+}
+
+.social-links svg {
+    width: 24px;
+    height: 24px;
+}
+
+.social-links a:hover {
+    background: var(--color-button);
+    color: var(--color-bg);
+    transform: scale(1.1);
+}
+
+footer .social-links a {
+    color: var(--color-text-footer);
+}
+
+/******** Formularios ********/
+.contact-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 2rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.form-field--full {
+    width: 100%;
+}
+
+label {
+    font-size: 0.9rem;
+    color: var(--color-title);
+}
+
+.sr-only {
+    display: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    color: var(--color-title);
+    font: inherit;
+    transition: all 0.3s ease-in-out;
+}
+
+textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-button);
+}
+
+.form-consent {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.form-consent input {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    accent-color: var(--color-button);
+}
+
+.form-consent a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.form-hp {
+    position: absolute;
+    left: -9999px;
+}
+
+.form-status {
+    width: 100%;
+    color: var(--color-title);
+}
+
+/******** Whatsapp botón flotante ********/
+.whatsapp-float {
+    position: fixed;
+    right: 1.25rem;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
+}
+
+.whatsapp-float:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+@media print {
+    .whatsapp-float { display: none; }
+}
+
+
+/***********************************************
+8. PÁGINAS
+************************************************/
 
 /******** Home ********/
 p.textherohome {
     font-family: 'Aeonik Pro Bold';
     font-weight: 800;
-    font-size: 3rem;
 }
 
 .img-hero {
@@ -447,7 +688,6 @@ p.textherohome {
 section p.logohome {
     font-family: 'Aeonik Pro Bold' !important;
     text-transform: lowercase;
-    font-size: 14rem;
     padding: 0;
     text-align: center;
 }
@@ -468,7 +708,7 @@ section p.logohome {
     width: 100%;
     margin-left: auto;
     margin-top: -6rem;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     position: relative;
     z-index: 0;
@@ -479,6 +719,7 @@ section p.logohome {
     margin-inline: auto;
 }
 
+/* Servicios de la home */
 .services-home {
     width: 80%;
     margin-left: auto;
@@ -489,7 +730,6 @@ section p.logohome {
     align-items: center;
     height: 15em;
     border-bottom: 1px solid #212125;
-    
 }
 
 .service .wrapper-services {
@@ -507,13 +747,12 @@ section p.logohome {
 }
 
 .service.web:hover .wrapper-services,
-.service.branding:hover .wrapper-services, 
+.service.branding:hover .wrapper-services,
 .service.seo:hover .wrapper-services,
 .service.rrss:hover .wrapper-services {
     opacity: 1;
     height: 6em;
 }
-
 
 .img-service {
     max-width: 250px;
@@ -528,16 +767,6 @@ section p.logohome {
     border-radius: 20px;
 }
 
-.text-service {
-    width: 100%;
-}
-
-.text-service h3 {
-    text-transform: none;
-    font-size: 7rem;
-    margin-bottom: 0;
-}
-
 .service.web:hover .img-service img,
 .service.branding:hover .img-service img,
 .service.seo:hover .img-service img,
@@ -545,34 +774,16 @@ section p.logohome {
     width: 80%;
 }
 
+.text-service {
+    width: 100%;
+}
+
 .container.align-center {
     display: flex;
     justify-content: center;
 }
 
-.wrapper-img-blog {
-    border-radius: 50px;
-    overflow: hidden;
-}
-
-.img-featured-blog-home {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 0rem;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-}
-
-.container.blogcenter {
-    align-items: center;
-}
-
-.title-blog-home a {
-    font-size: 1.5rem;
-    line-height: 1.1;
-
-}
-
+/* Casos de éxito */
 .col-10.center {
     display: flex;
     justify-content: center;
@@ -587,8 +798,79 @@ section p.logohome {
     max-width: 400px;
 }
 
+/* Blog en la home */
+.wrapper-img-blog {
+    border-radius: 50px;
+    overflow: hidden;
+}
 
-/*Portfolio*/
+.img-featured-blog-home {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.container.blogcenter {
+    align-items: center;
+}
+
+.title-blog-home a {
+    font-size: 1.5rem;
+    line-height: 1.1;
+}
+
+/* Slider de últimos posts */
+.ultimos-posts .slider-nav {
+    position: absolute;
+    top: 50%;
+    left: 72.5%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.ultimos-posts .swiper-button-prev,
+.ultimos-posts .swiper-button-next {
+    position: static;
+    margin: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    color: var(--color-title);
+    transition: all .3s ease-in-out;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    ::slotted(svg),
+    svg {
+        width: 50% !important;
+        height: 50% !important;
+    }
+}
+
+.ultimos-posts .swiper-button-prev:hover,
+.ultimos-posts .swiper-button-next:hover {
+    background: var(--color-button);
+    color: var(--color-bg);
+    width: 62px;
+    height: 62px;
+}
+
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+    display: none;
+}
+
+/* Portfolio de la home (acordeón) */
 .col-portfolio {
     flex: none;
     width: 15%;
@@ -601,7 +883,6 @@ section p.logohome {
 .col-portfolio.active {
     width: 40%;
 }
-
 
 .portfolio-inner {
     height: 40rem;
@@ -624,7 +905,6 @@ section p.logohome {
 .col-portfolio.active .portfolio-info {
     opacity: 1;
 }
-
 
 h3.portfolio-title {
     text-transform: none;
@@ -666,70 +946,14 @@ h3.portfolio-title {
     display: block;
 }
 
-/*Slider blog*/
-.ultimos-posts .slider-nav {
-    position: absolute;
-    top: 50%;
-    left: 72.5%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    gap: 1.8rem;
-}
-
-.ultimos-posts .swiper-button-prev,
-.ultimos-posts .swiper-button-next {
-  position: static;
-  margin: 0;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);       /* tu negro #0b0b0c, semitransparente */
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-  color: var(--color-title);
-  transition: all .3s ease-in-out;
-}
-
-.swiper-button-prev, .swiper-button-next {
-    ::slotted(svg), svg {
-        width: 50% !important;
-        height: 50% !important;
-    }
-}
-
-.ultimos-posts .swiper-button-prev:hover,
-.ultimos-posts .swiper-button-next:hover {
-    background: var(--color-button);
-    color: var(--color-bg);
-    width: 62px;
-    height: 62px;
-}
-
-.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
-    display: none;
-}
-
-/******** Nuestros servicios ********/
-.text-service {
-    width: 100%;
-}
-
-.text-service h2 {
-    text-transform: none;
-    font-size: 7rem;
-    margin-bottom: 0;
-}
-
+/******** Servicios (página) ********/
 section.section-service {
-    background: var(--color-bg);
     position: sticky;
-    top: 0;       
-    min-height: 100vh;  
+    top: 0;
+    min-height: 100vh;
+    background: var(--color-bg);   /* opaco: tapa la sección anterior */
     border-top: solid 3px var(--color-button);
+    view-timeline-name: --seccion; /* el scroll de cada sección dirige su propia animación */
 }
 
 .service-photo {
@@ -748,7 +972,36 @@ section.section-service {
     justify-content: end;
 }
 
-/******** Plantilla página blog y categorías ********/
+/* La foto crece al entrar la sección (mientras se superpone a la anterior) */
+@keyframes foto-crece {
+    from { transform: scale(0.5); }
+    to   { transform: scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+    .service-photo {
+        transform-origin: top right;
+        animation: foto-crece linear both;
+        animation-timeline: --seccion;
+        animation-range: entry 0% entry 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-photo { animation: none; }
+}
+
+/* Tablet y móvil: sin efecto de superposición. Las secciones son más altas
+   que la pantalla y con "sticky" se cortaría su parte final. */
+@media (max-width: 992px) {
+    section.section-service {
+        position: relative;
+        top: auto;
+        min-height: auto;
+    }
+}
+
+/******** Blog: listado y categorías ********/
 .grid-post {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -758,8 +1011,9 @@ section.section-service {
 .wrapper-blog {
     background: var(--color-bg-alt);
     border-radius: 15px;
-    overflow: hidden;;
+    overflow: hidden;
 }
+
 .text-wrapper-blog {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -779,11 +1033,8 @@ section.section-service {
     object-fit: cover;
 }
 
-
-
-/******** Plantilla post blog ********/
+/******** Blog: entrada ********/
 .title-blog {
-    font-size: 3rem;
     margin-bottom: 3rem;
 }
 
@@ -805,7 +1056,6 @@ section.blog h2 {
     gap: 2rem;
     align-items: center;
     margin-bottom: 2rem;
-
 }
 
 .post-categories {
@@ -825,8 +1075,8 @@ section.blog h2 {
     line-height: 1.2;
 }
 
-.date-post{
-    position:relative;
+.date-post {
+    position: relative;
 }
 
 .date-post::before {
@@ -901,64 +1151,63 @@ section.blog h2 {
 .intern-cols {
     display: flex;
     flex: 1;
-
 }
 
-/******** Portfolio ********/
+/******** Portfolio: slider del listado ********/
 .container.slider-portfolio {
     padding: 0;
     margin: 0;
     max-width: 100%;
 }
 
-
-/* ---------- portfolio slider ---------- */
 .pslider {
-  position: relative;
-  padding-bottom: 3.5rem;
-  overflow: hidden;
+    position: relative;
+    padding-bottom: 3.5rem;
+    overflow: hidden;
 }
 
 .pslider .pslider-stage {
-  position: relative;
-  padding-bottom: 3.5rem;
+    position: relative;
+    padding-bottom: 3.5rem;
 }
 
 .pslider .swiper-slide {
-  width: 78vw;
-  aspect-ratio: 1.29 / 1;
-  border-radius: 2.5rem;
-  overflow: hidden;
-  cursor: grab;
+    width: 78vw;
+    aspect-ratio: 1.29 / 1;
+    border-radius: 2.5rem;
+    overflow: hidden;
+    cursor: grab;
 }
+
 .pslider .swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: contrast(0.5);
-  transition: filter .3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: contrast(0.5);
+    transition: filter .3s ease-in-out;
 }
 
 .pslider .swiper-slide img:hover {
-  filter: contrast(1);
+    filter: contrast(1);
 }
 
 .pslider-link {
-  display: block;
-  width: 100%;
-  height: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .pslider .pslider-ui {
-  position: absolute;
-  inset: 0 0 3.5rem 0;
-  pointer-events: none;
-  z-index: 2;
+    position: absolute;
+    inset: 0 0 3.5rem 0;
+    pointer-events: none;
+    z-index: 2;
 }
+
 .pslider .pslider-ui > * {
-  position: absolute;
-  margin: 0;
+    position: absolute;
+    margin: 0;
 }
 
 .pslider .pslider-btn {
@@ -988,132 +1237,118 @@ section.blog h2 {
 }
 
 .pslider .pslider-btn.swiper-button-disabled {
-  opacity: 0.3;
-  cursor: default;
+    opacity: 0.3;
+    cursor: default;
 }
+
 .pslider .pslider-prev { left: 9.8%; }
 .pslider .pslider-next { left: 81.2%; }
 
 .pslider .pslider-title {
-  left: 9.8%;
-  top: 74%;
-  transform: translateY(-50%);
-  font-size: clamp(3rem, 7vw, 8rem);
-  line-height: 1;
-  text-transform: none;
-  mix-blend-mode: difference;
+    left: 9.8%;
+    top: 74%;
+    transform: translateY(-50%);
+    font-size: clamp(3rem, 7vw, 8rem);
+    line-height: 1;
+    text-transform: none;
+    mix-blend-mode: difference;
 }
+
 .pslider .pslider-year {
-  left: 81.2%;
-  top: 67%;
-  color: var(--color-text);
-  font-size: 1.2rem;
-  font-family: 'Aeonik Pro Bold';
+    left: 81.2%;
+    top: 67%;
+    color: var(--color-text);
+    font-size: 1.2rem;
+    font-family: 'Aeonik Pro Bold';
 }
+
 .pslider .pslider-cta {
-  left: 79%;
-  bottom: -3.5rem;
-  pointer-events: auto;
+    left: 79%;
+    bottom: -3.5rem;
+    pointer-events: auto;
 }
 
 .pslider .pslider-title,
 .pslider .pslider-year,
 .pslider .pslider-cta {
-  transition: opacity 0.2s;
+    transition: opacity 0.2s;
 }
+
 .pslider .pslider-ui.is-out .pslider-title,
 .pslider .pslider-ui.is-out .pslider-year,
 .pslider .pslider-ui.is-out .pslider-cta {
-  opacity: 0;
+    opacity: 0;
 }
 
- /* ---------- miniaturas ---------- */
+/* Miniaturas */
 .pslider .pslider-thumbs {
-  display: flex;
-  justify-content: safe center;
-  gap: 0.75rem;
-  padding: 1rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.pslider .pslider-thumbs::-webkit-scrollbar {
-  display: none;
-}
-.pslider .pslider-thumb {
-  flex: 0 0 auto;
-  padding: 3px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  background: none;
-  cursor: pointer;
-  transition: border-color 0.3s;
-}
-.pslider .pslider-thumb img {
-  display: block;
-  width: 68px;
-  height: 48px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-.pslider .pslider-thumb.is-active {
-  border-color: var(--color-bg-footer); /* en fondo claro: #1e1e24 */
-}
-
-@media (min-width: 769px) {
-  .pslider .swiper-slide { width: 38.7vw; }
-}
-
-@media (max-width: 768px) {
-  .pslider .pslider-stage { padding-bottom: 0; }
-  .pslider .pslider-ui {
-    position: static;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.5rem 1rem 0;
-  }
-  .pslider .pslider-ui > * {
-    position: static;
-    transform: none;
-  }
-  .pslider .pslider-title { flex-basis: 100%; order: 1; font-size: 3rem; }
-  .pslider .pslider-year { order: 2; }
-  .pslider .pslider-cta { order: 3; margin-right: auto; }
-  .pslider .pslider-prev { order: 4; }
-  .pslider .pslider-next { order: 5; }
+    justify-content: safe center;
+    gap: 0.75rem;
+    padding: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
-  /* ---------- escritorio ---------- */
-  @media (min-width: 769px) {
-    .swiper-slide { width: 38.7vw; }
-  }
+.pslider .pslider-thumbs::-webkit-scrollbar {
+    display: none;
+}
 
-  /* ---------- móvil: la UI va debajo del slider ---------- */
-  @media (max-width: 768px) {
+.pslider .pslider-thumb {
+    flex: 0 0 auto;
+    padding: 3px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.pslider .pslider-thumb img {
+    display: block;
+    width: 68px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.pslider .pslider-thumb.is-active {
+    border-color: var(--color-bg-footer);
+}
+
+/* Escritorio */
+@media (min-width: 769px) {
+    .pslider .swiper-slide { width: 38.7vw; }
+}
+
+/* Móvil: la UI va debajo del slider */
+@media (max-width: 768px) {
     .pslider { padding-bottom: 0; }
-    .pslider-ui {
-      position: static;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.5rem 1rem 0;
-    }
-    .pslider-ui > * {
-      position: static;
-      transform: none;
-    }
-    .pslider-title { flex-basis: 100%; order: 1; font-size: 3rem; }
-    .pslider-year { order: 2; }
-    .pslider-cta { order: 3; margin-right: auto; }
-    .pslider-prev { order: 4; }
-    .pslider-next { order: 5; }
-  }
+    .pslider .pslider-stage { padding-bottom: 0; }
 
+    .pslider .pslider-ui {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem 1rem 0;
+    }
 
-/******** Plantilla portfolios ********/
-/*Hero portfolios*/
+    .pslider .pslider-ui > * {
+        position: static;
+        transform: none;
+    }
+
+    .pslider .pslider-title { flex-basis: 100%; order: 1; font-size: 3rem; }
+    .pslider .pslider-year { order: 2; }
+    .pslider .pslider-cta { order: 3; margin-right: auto; }
+    .pslider .pslider-prev { order: 4; }
+    .pslider .pslider-next { order: 5; }
+}
+
+/******** Portfolio: plantilla de proyecto ********/
+/* Hero */
 .section-portfolio {
     position: relative;
     height: 110vh;
@@ -1129,18 +1364,18 @@ section.blog h2 {
     z-index: -1; /* detrás del contenido */
 }
 
-/* Capa oscura opcional, para que el texto se lea */
+/* Capa oscura para que el texto se lea */
 .section-portfolio::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(11, 11, 12, 0.3);
-  z-index: 0;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 11, 12, 0.3);
+    z-index: 0;
 }
 
 .section-portfolio > .container {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 
 .section-portfolio .container {
@@ -1150,7 +1385,7 @@ section.blog h2 {
 }
 
 .info-portfoliolayout {
-    display:flex;
+    display: flex;
 }
 
 h1.title-portfoliolayout {
@@ -1172,7 +1407,7 @@ h1.title-portfoliolayout {
     color: white;
 }
 
-/*Body portfolio*/
+/* Cuerpo */
 section.section-info-portfolio {
     border-radius: 80px 80px 0px 0px;
     position: relative;
@@ -1183,12 +1418,10 @@ section.section-info-portfolio {
 }
 
 .section-info-portfolio .container {
-    width: 60% ;
+    width: 60%;
     align-items: center;
     text-align: center;
 }
-
-
 
 .col-4.bg-portfolio {
     background: var(--color-bg-alt);
@@ -1198,7 +1431,6 @@ section.section-info-portfolio {
 
 .col-4.bg-portfolio h2 {
     text-transform: none;
-    
 }
 
 .col-4.bg-portfolio p {
@@ -1207,11 +1439,9 @@ section.section-info-portfolio {
 
 .container.boxes-portfolio {
     gap: 1rem;
-    /* column-gap: 1rem; */
     flex-wrap: nowrap;
     row-gap: 0;
 }
-
 
 .portfolio-categories {
     display: flex;
@@ -1233,11 +1463,11 @@ section.section-info-portfolio {
     white-space: nowrap;
 }
 
-/******** Quienes somos ********/
+/******** Quiénes somos ********/
 .title-about {
-    font-size: 4rem;
     text-transform: none;
 }
+
 .img-hero-about {
     border-radius: 40px;
 }
@@ -1263,7 +1493,7 @@ section.section-info-portfolio {
 
 .img-about-bg {
     border-radius: 60px;
-    aspect-ratio: 21/9;
+    aspect-ratio: 21 / 9;
     object-fit: cover;
 }
 
@@ -1273,7 +1503,7 @@ section.section-info-portfolio {
     justify-content: end;
 }
 
-/*Faqs*/
+/* FAQs */
 .faqs {
     width: 100%;
     max-width: 900px;
@@ -1294,7 +1524,6 @@ section.section-info-portfolio {
     align-items: center;
     gap: 1rem;
     padding: 1.2rem 1.8rem;
-    font-size: 1.5rem;
     font-family: 'Aeonik Pro Bold';
     color: var(--color-text-footer);
     cursor: pointer;
@@ -1352,166 +1581,13 @@ section.section-info-portfolio {
     background: var(--color-bg-footer);
 }
 
-/******** Redes sociales ********/
-.social-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-    color: var(--color-title);
-    transition: all 0.3s ease-in-out;
-  }
-
-  .social-links svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .social-links a:hover {
-    background: var(--color-button);
-    color: var(--color-bg);
-    transform: scale(1.1);
-  }
-
-  footer .social-links a {
-    color: var(--color-text-footer);
-  }
-
-  /******** FORMS ********/
-  .contact-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding-bottom: 2rem;
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    /*width: calc(50% - 0.75rem);*/
-    width: 100%;
-  }
-
-  .form-field--full {
-    width: 100%;
-  }
-
-  label {
-    font-size: 0.9rem;
-    color: var(--color-title);
-  }
-
-  .sr-only {
-    display: none;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  textarea {
-    width: 100%;
-    padding: 0.7rem 0.85rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 12px;
-    color: var(--color-title);
-    font: inherit;
-    transition: all 0.3s ease-in-out;
-  }
-
-  textarea {
-    min-height: 160px;
-    resize: vertical;
-  }
-
-  input:focus,
-  textarea:focus {
-    outline: none;
-    border-color: var(--color-button);
-  }
-
-  .form-consent {
-    flex-direction: row;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .form-consent input {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 18px;
-    accent-color: var(--color-button);
-  }
-
-  .form-consent a {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .form-hp {
-    position: absolute;
-    left: -9999px;
-  }
-
-  .form-status {
-    width: 100%;
-    color: var(--color-title);
-  }
-
-  @media (max-width: 768px) {
-    .form-field {
-      width: 100%;
-    }
-  }
-
-/******** Whatsapp botón flotante ********/
-.whatsapp-float {
-  position: fixed;
-  right: 1.25rem;
-  bottom: calc(1.25rem + env(safe-area-inset-bottom));
-  z-index: 1000;
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25d366;
-  color: #fff;
-  box-shadow: 0 6px 20px rgb(0 0 0 / 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
-}
-
-.whatsapp-float:focus-visible {
-  outline: 3px solid #fff;
-  outline-offset: 3px;
-}
-
-@media print {
-  .whatsapp-float { display: none; }
-}
-
-
 
 /***********************************************
-RESPONSIVE · base (escritorio)
+9. RESPONSIVE
+************************************************/
+
+/***********************************************
+RESPONSIVE · pantallas medianas (hasta 1337px)
 ************************************************/
 @media (max-width: 1337px) {
     .img-home {
@@ -1519,60 +1595,15 @@ RESPONSIVE · base (escritorio)
     }
 }
 
-
-/* Base (escritorio): el botón hamburguesa no se ve y el panel
-   "desaparece" para que logo, menú y email se comporten como antes */
-.menu-toggle {
-    display: none;
-}
-
-.header-panel {
-    display: contents;
-}
-
-/* ---------- Tipografía fluida ----------
-   Los títulos grandes escalan poco a poco con el ancho de pantalla.
-   clamp(mínimo, valor fluido, máximo): el máximo es el tamaño original de escritorio. */
-h1 {
-    font-size: clamp(2.5rem, 1.2rem + 7vw, 8rem);
-    overflow-wrap: break-word;
-    hyphens: auto;
-}
-
-h2 { font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem); }
-h3 { font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem); }
-
-h3.bigtitle { font-size: clamp(2.75rem, 1.5rem + 4.2vw, 4rem); }
-
-p.text-big { font-size: clamp(1.5rem, 1rem + 1.4vw, 2rem); }
-p.textherohome { font-size: clamp(2rem, 1rem + 3vw, 3rem); }
-
-.title-about { font-size: clamp(2.5rem, 1rem + 4.4vw, 4rem); }
-.title-blog { font-size: clamp(2rem, 1.2rem + 2.2vw, 3rem); }
-
-/* Logo gigante "Shaka Agency" (home, quiénes somos y footer) */
-section p.logohome {
-    font-size: clamp(2.5rem, 15vw, 14rem);
-}
-
-/* Títulos de los servicios de la home */
-.text-service h2, 
-.text-service h3 {
-    font-size: clamp(3.5rem, 6vw, 7rem);
-}
-
-.faq__titulo {
-    font-size: clamp(1.15rem, 0.9rem + 0.7vw, 1.5rem);
-}
-
-/* ---------- Menú hamburguesa: tablet y móvil (hasta 992px) ---------- */
+/***********************************************
+RESPONSIVE · menú hamburguesa (hasta 992px)
+************************************************/
 @media (max-width: 992px) {
 
     html.menu-open {
         overflow: hidden; /* bloquea el scroll con el menú abierto */
     }
 
-    /* ---------- Header + menú hamburguesa ---------- */
     .header {
         padding: 0.75rem 1.5rem;
     }
@@ -1668,7 +1699,7 @@ RESPONSIVE · tablet (de 651px a 992px)
     }
 
     /* ---------- Tipografía ----------
-       Los tamaños de los títulos son fluidos (ver "Tipografía fluida" más arriba) */
+       Los tamaños de los títulos son fluidos (ver sección 4. Tipografía) */
     .title-blog { margin-bottom: 2rem; }
 
     /* ---------- Espacios entre secciones ---------- */
@@ -1897,6 +1928,38 @@ RESPONSIVE · tablet (de 651px a 992px)
         height: 52px;
     }
 
+    /* ---------- Servicios (página) ---------- */
+    .section-service .text-service {
+        padding-right: 22%; /* deja sitio a la foto, que va arriba a la derecha */
+    }
+
+    .section-service .text-service h2 {
+        font-size: clamp(2.75rem, 6.5vw, 4rem);
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    /* Deja a la derecha el ancho de la foto (18% + su margen) para que
+       las columnas no pasen por debajo de ella */
+    .section-service .container:has(> .service-photo) {
+        padding-right: calc(18% + 2.5rem);
+    }
+
+    /* Texto y "Qué incluye" en dos columnas; las palabras clave debajo */
+    .section-service .col-3 {
+        width: 50%;
+    }
+
+    .section-service .keywords {
+        width: 100%;
+    }
+
+    .service-photo {
+        top: 2.5rem;
+        right: 1.5rem;
+        width: 18%;
+    }
+
     /* ---------- Blog: listado y categorías ---------- */
     .grid-post {
         grid-template-columns: 1fr 1fr;
@@ -2050,7 +2113,7 @@ RESPONSIVE · móvil (hasta 650px)
     }
 
     /* ---------- Tipografía ----------
-       Los tamaños de los títulos son fluidos (ver "Tipografía fluida" más arriba) */
+       Los tamaños de los títulos son fluidos (ver sección 4. Tipografía) */
     .title-blog { margin-bottom: 1.5rem; }
 
     /* ---------- Espacios entre secciones ---------- */
@@ -2254,6 +2317,26 @@ RESPONSIVE · móvil (hasta 650px)
     .ultimos-posts .slider-nav .swiper-button-next:hover {
         width: 52px;
         height: 52px;
+    }
+
+    /* ---------- Servicios (página) ---------- */
+    .section-service .text-service h2 {
+        font-size: clamp(2rem, 9vw, 3rem);
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    /* La foto deja de estar flotando a la derecha y pasa al flujo, justo debajo del título */
+    .section-service .service-photo {
+        position: static;
+        order: -1;
+        width: 45%;
+        max-width: 14rem;
+        transform-origin: top left;
+    }
+
+    .section-service .keywords {
+        justify-content: flex-start;
     }
 
     /* ---------- Blog: listado y categorías ---------- */

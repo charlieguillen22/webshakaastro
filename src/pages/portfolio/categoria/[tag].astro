@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Postblog from "../../../components/Postblog.astro";
 
+import { slugify } from '../../../utils/slugify';
+
 export async function getStaticPaths() {
   const proyectos = (await getCollection("portfolio", ({ data }) => !data.draft))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -10,7 +12,7 @@ export async function getStaticPaths() {
   const tags = [...new Set(proyectos.flatMap((proyecto) => proyecto.data.tags ?? []))];
 
   return tags.map((tag) => ({
-    params: { tag },
+    params: { tag:slugify (tag) },
     props: {
       tag,
       proyectos: proyectos.filter((proyecto) => proyecto.data.tags?.includes(tag)),
